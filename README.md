@@ -1,8 +1,8 @@
-# CogArch_Markdown
+# ITAA_Markdown
 
 
 ## Introduction
-This is the markdown repository template for the "Export to GitHub Pages" utility in [Cognitive Architect](https://w3.ibm.com/tools/cogarch/).  
+This is the markdown repository template for the "Export to GitHub Pages" utility in IBM IT Architect Assistant.  
 
 The export utility creates markdown files containing the architecture information and then generates the corresponding GitHub Pages of the architecture using [MkDocs](https://www.mkdocs.org), [ejs](https://ejs.co/), [MkDocs Awesome Pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).  
 
@@ -41,9 +41,9 @@ For help on creating the token and getting the repository URL, go to [GitHub Rep
 
 
 
-## Usage in Cognitive Architect : Export Utility
+## Usage in IBM IT Architect Assistant : Export Utility
 
-1. Go to the Export / Import menu in Cognitive Architect
+1. Go to the Export / Import menu in IBM IT Architect Assistant
 2. Provide your github repository link and token
 3. Click the Export button
 4. The Export utility will execute in the background and you will be notified and provided with the link to the published pages when the export is done.
@@ -51,7 +51,7 @@ For help on creating the token and getting the repository URL, go to [GitHub Rep
 
 ⚠️ Warning: Do not close the browser window after the Export request has been submitted! The URL of your GitHub Pages will be returned when the export is completed.
 
-💡 Tip: You can continue to work in Cognitive Architect while your Export request is being processed.
+💡 Tip: You can continue to work in IBM IT Architect Assistant while your Export request is being processed.
 
 
 If you did not see or get the URL, your GitHub Pages can typically be accessed via:  
@@ -66,16 +66,16 @@ If you get a "*404 - Page/File Not Found*" error, check your repository's Settin
 
 To generate an access token for your repository:
  - Navigate to [repository-url]/settings/tokens/new (e.g. https://github.ibm.com/settings/tokens/new)
- - Add a description, for e.g. cogArch-access and select *repo* scope
+ - Add a description, for e.g. iiaa-access and select *repo* scope
  - Click the "Generate Token" button
- - Click on the clipboard icon (📋) to copy the token and save it somewhere. You will need this in the "Export dialog" in Cognitive Architect. Note that you cannot retrieve the token from Git after you leave the Token generation page.
+ - Click on the clipboard icon (📋) to copy the token and save it somewhere. You will need this in the "Export dialog" in IBM IT Architect Assistant. Note that you cannot retrieve the token from Git after you leave the Token generation page.
 
 
 For this export function, you have to use the HTTPS repository URL, regardless of whether your target repository is in Enterprise Git or Public Git.
 
 Sample HTTPS URLs are:
- - `https://github.ibm.com/jang/CogArch_Markdown_arch1.git` (GHE) 
- - `https://github.com/jang/CogArch_Markdown_arch5.git` (Public)
+ - `https://github.ibm.com/owner-name/IIAA_Markdown_arch1.git` (GHE) 
+ - `https://github.com/owner-name/IIAA_Markdown_arch5.git` (Public)
 
 You can retrieve the URL by clicking on the Code button for your repository and copy the HTTPS URL.
 
@@ -92,12 +92,12 @@ To customize the markdown files:
 - Copy the `ejs` file(s) to be changed from the *templates/official_template* folder to the *templates/user_template* one.
   - Note: Do not change the name of the file(s). 
 - Modify the content as needed.
-- Re-submit the Export request in Cognitive Architect.
+- Re-submit the Export request in IBM IT Architect Assistant.
 
 
 To change the look & feel of your pages:
 - refer to Material for MkDocs - Customization](https://squidfunk.github.io/mkdocs-material/customization/) on how to customize the themes
-- Re-submit the Export request in Cognitive Architect.
+- Re-submit the Export request in IBM IT Architect Assistant.
 
 
 💡 Tip: If the GitHub Pages do not reflect your latest updates, clear the cache and refresh.
@@ -109,7 +109,7 @@ To change the look & feel of your pages:
 
 
 ## Refreshing Your Pages using Command Line Execution
-If you customize the theme and/or *.MD files, instead of using the Export utility in Cognitive Architect, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
+If you customize the theme and/or *.MD files, instead of using the Export utility in IBM IT Architect Assistant, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
 
 In a terminal window:
 - Download your repository to your local machine
@@ -121,7 +121,7 @@ In a terminal window:
 - Run `make deploy` to deploy the changes
 
 
-⚠️ Warning: If there are updates to your architecture after executing the Export function, DO NOT USE this approach. Run the Export utility in Cognitive Architect to generate the latest updates.
+⚠️ Warning: If there are updates to your architecture after executing the Export function, DO NOT USE this approach. Run the Export utility in IBM IT Architect Assistant to generate the latest updates.
 
 
 ## Feedback and Contributions
