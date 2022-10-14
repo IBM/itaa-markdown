@@ -31,8 +31,12 @@ When the export is successfully executed:
 Before executing the export utility, the following setup is required:
 
 
-1. Make a copy of the markdown repository template to your own GitHub repository by [*Fork*ing](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repository.
-   - If you are using GitHub Free, your repository has to be set as public. More information on GitHub Pages configuration [here](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+1. Make a copy of the markdown repository template to your own GitHub repository by one of the following:
+
+   - [*Fork*ing](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repository if you are using Public GitHub
+   - *Download* the zip of the markdown repository template and upload to your enterprise repository if you are using Enterprise GitHub 
+   
+    If you are using GitHub Free, your repository has to be set as public. More information on GitHub Pages configuration [here](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
 2. Generate the GitHub token with ***repo***  access. This is needed so that the export utility can generate the appropriate files into your GitHub repo.  
 For help on creating the token and getting the repository URL, go to [GitHub Repo URL & Token](#github-repo-token--url).
 
@@ -55,8 +59,8 @@ For help on creating the token and getting the repository URL, go to [GitHub Rep
 
 
 If you did not see or get the URL, your GitHub Pages can typically be accessed via:  
-`https://pages.github.ibm.com/{github_account}/{repo_name}/`or  
-`https://pages.github.com/{github_account}/{repo_name}/`
+`https://pages.{enterprise_github_domain}/{github_account}/{repo_name}/`or  
+`https://{github_account}.github.io/{repo_name}/`
 
 If you get a "*404 - Page/File Not Found*" error, check your repository's Settings -> GitHub Pages for the correct URL.
 
