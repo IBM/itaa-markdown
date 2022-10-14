@@ -1,0 +1,50 @@
+
+
+# <%- data.name %>
+
+### Dependency Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### Effect on Plan
+
+<% if (data.effectOnPlan) { %>
+<%- data.effectOnPlan %>
+<% } %>
+
+
+### Required by Date
+
+<% if (data.requiredByDate) { %>
+<%- data.requiredByDate %>
+<% } %>
+
+
+### Owner
+
+<% if (data.owner) { %>
+<%- data.owner %>
+<% } %>
+
+
+### Associated Risk ID
+
+<% if (data.associatedRiskId) { %>
+<%- data.associatedRiskId %>
+<% } %>
+
+
+### Closed Date
+
+<% if (data.closedDate) { %>
+<%- data.closedDate %>
+<% } %>
+
+
+### Is this a Key Dependency?
+
+<%- data.isKey %>
+

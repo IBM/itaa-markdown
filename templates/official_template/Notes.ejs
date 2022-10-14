@@ -1,0 +1,16 @@
+
+
+# <%- data.name %>
+
+### Label
+
+<% if (data.labels) { %>
+<% data.labels.forEach(label => { %>
+`<%- label %>`<% }) %>
+<% } %>
+
+### Message
+
+<% if (data.content) { %>
+<%- data.content %>
+<% } %>

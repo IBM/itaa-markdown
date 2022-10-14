@@ -1,0 +1,47 @@
+
+
+# <%- data.id %>
+
+### Name
+
+<%- data.name %>
+
+### Package Name
+
+<%- data.ucPackage %>
+
+### Description
+
+<%- data.description %>
+
+### List of Actor Names
+
+<% if (data.actors) { %>
+    <% data.actors.forEach(element => { %>
+- <%- element.name %>
+    <% }) %>
+<% } %>
+
+
+### Pre-Conditions
+
+<%- data.preconditions %>
+
+### Basic Flow
+
+<%- data.basicFlow %>
+
+### Alternate Flows
+
+<%- data.alternativeFlows %>
+
+### Successful Outcomes
+
+<%- data.successfulOutcomes %>
+
+### Failure Outcomes
+
+<%- data.failureOutcomes %>
+
+
+

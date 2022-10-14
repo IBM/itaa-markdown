@@ -1,0 +1,228 @@
+@charset "UTF-8";
+
+details thead th:empty {
+    border: thin solid red !important;
+    display: none;
+}
+
+.md-typeset table {
+   min-width: 100%;
+}
+
+details .md-typeset__table {
+    width: 100%;
+}
+
+.md-typeset__table {
+    float: left;
+}
+
+.md-main__inner {
+    margin-top: 0 !important;
+}
+
+.md-header__inner {
+    margin-left: 0 !important;
+}
+
+.md-header__button.md-logo {
+    display: none;
+}
+
+.md-main__inner.md-grid {
+    margin-left: 0 !important;
+    max-width: 100% !important;
+}
+
+.md-typeset table:not([class]) {
+    display: table;
+}
+
+th, td {
+    border: 1px solid var(--md-typeset-table-color);
+    border-spacing: 0;
+    border-bottom: none;
+    border-left: none;
+    border-top: none;
+}
+
+
+details td, details th {
+   border-bottom: none !important;
+   border-left: none !important;
+   border-right: none !important;
+}
+
+.md-content {
+    background-color: #EDEFF1;
+    min-height: calc(100vh - 185px);
+}
+
+.md-content h1 {
+    color: #161616;
+}
+
+.md-content h3+p {
+    color: #525252;
+}
+
+.md-content .md-typeset__table {
+    padding: 0 !important;
+}
+
+.md-content .md-typeset__table details table {
+    border-left: 0px;
+    border-right: 0px;
+    border-top: 0px;
+}
+
+.md-content .md-typeset__table details summary {
+    padding-bottom: 0px !important;
+}
+
+@media screen and (max-width: 76.25em) {
+    .toc-back-btn, .close-right-btn {
+        display: none;
+    }    
+}
+
+.toc-back-btn {
+    position: absolute;
+    top: 0px;
+    right: -20px;
+    width: 20px;
+    height: 40px;
+    background-color: #CBCBCB;
+    text-align: center;
+    line-height: 40px;
+}
+
+.close-right-btn {
+    position: absolute;
+    top: 0px;
+    right: 242px;
+    width: 20px;
+    height: 40px;
+    background-color: #CBCBCB;
+    text-align: center;
+    line-height: 40px;
+}
+
+.md-sidebar--primary.collapse {
+    width: 0;
+}
+
+.md-sidebar--primary .toc-back-btn .md-nav__icon {
+    margin-top: 15px;
+    transform: rotate(180deg);
+}
+
+.md-sidebar--primary.collapse .toc-back-btn .md-nav__icon {
+    margin-top: 5px;
+    transform: rotate(0deg);
+}
+
+.md-sidebar--secondary.collapse .close-right-btn .md-nav__icon {
+    margin-top: 15px;
+    transform: rotate(180deg);
+}
+
+.md-sidebar--secondary .close-right-btn .md-nav__icon {
+    margin-top: 5px;
+    transform: rotate(0deg);
+}
+
+.md-sidebar.md-sidebar--secondary.collapse {
+    width: 0;
+}
+
+.md-sidebar.md-sidebar--secondary.collapse  .close-right-btn {
+    right: 0;
+}
+
+details {
+    border: 0 !important;
+}
+
+details summary {
+    margin-left: 0 !important;
+    background-color: white !important;
+    padding-left: 0.3rem !important;
+}
+
+details summary::before {
+    content: none !important;
+}
+
+details .md-typeset__table table {
+    background-color: #F4F4F4 !important;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link,
+.page_structure {
+    color: #999;
+    line-height: 35px;
+    margin: 20px 0 20px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.md-nav--secondary {
+    padding: 0 11px;
+}
+
+.md-nav--secondary .page_structure {
+    font-size: 15px;
+    font-weight: 400;
+    padding: 0 2px;
+}
+
+.__page_structure.collapsed .md-nav__list {
+    display: none;
+}
+
+.__page_structure .md-icon {
+    transform: rotate(90deg);
+    margin: 5px -5px;
+}
+
+.__page_structure .md-icon:after {
+    vertical-align: 0rem;
+}
+
+
+.__page_structure.collapsed .md-icon{
+    transform: rotate(0deg);
+    margin: 0px 0px 10px 0;
+}
+
+.same-line {
+    float: right;
+    border: 0px !important;
+    color: #4051B5 !important;
+    font-size: 15px;
+    line-height: 30px;
+    padding-right: 5px;
+}
+
+.diff-line {
+    float: right;
+    border: 0px !important;
+    color: #4051B5 !important;
+    font-size: 15px;
+    line-height: 30px;
+    padding-right: 5px;
+    margin-top: -30px;
+}
+
+.md-button:hover,.md-button:focus {
+    background-color: #EDEFF1 !important;
+}
+
+.md-typeset img {
+    max-width: 70%;
+}
+
+.md-typeset .md-button {
+    padding: 0.625em 0 0 0;
+}

@@ -1,0 +1,24 @@
+
+## Diagram
+
+![<%- data.name %>](../img/<%- data._id %>.png)
+
+### Name
+
+<% if (data.name) { %>
+<%- data.name %>
+<% } %>
+
+### Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### Label
+
+<% if (data.labels) { %>
+<% data.labels.forEach(label => { %>
+`<%- label %>`<% }) %>
+<% } %>

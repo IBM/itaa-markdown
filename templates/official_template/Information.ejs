@@ -1,0 +1,80 @@
+
+
+# Information
+
+### Name
+
+<%- data.name %>
+
+### Client Name
+
+<%- data.clientName %>
+
+### Opportunity Number
+
+<%- data.salesConnectNum %>
+
+### Industry
+
+<% if (data.industries) { %>
+<% data.industries.forEach(element => { %>
+<%- element %>  <% }) %>
+<% } %>
+
+
+### Technology
+
+<% if (data.technologies) { %>
+<% data.technologies.forEach(element => { %>
+<%- element %>  <% }) %>
+<% } %>
+
+
+### Business Objectives
+
+<% if (data.businessObjectives) { %>
+<% data.businessObjectives.forEach(element => { %>
+<%- element %>  <% }) %>
+<% } %>
+
+
+### Technical Challenges
+
+<% if (data.technicalChallenges) { %>
+<% data.technicalChallenges.forEach(element => { %>
+<%- element %>  <% }) %>
+<% } %>
+
+
+### Tag
+
+<% if (data.tags) { %>
+<% data.tags.forEach(element => { %>
+<%- element %>  <% }) %>
+<% } %>
+
+### Share As-is
+
+<%- data.isAsIs %>
+
+
+### Owner
+
+<% if (data.owner) { %>
+User ID: &nbsp; &nbsp; &nbsp; <%- data.owner.fullname %>  
+Job Role: &nbsp; &nbsp; <%- data.owner.jobResponsibilities %>  
+Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%- data.owner._id %>  
+<% } %>
+
+
+### Last modified by
+
+<% if (data.lastModifiedUser) { %>
+User ID: &nbsp; &nbsp; &nbsp; <%- data.lastModifiedUser.fullname %>  
+Job Role: &nbsp; &nbsp; <%- data.lastModifiedUser.jobResponsibilities %>  
+Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%- data.lastModifiedUser._id %>  
+<% } %>
+
+### Last modified date
+
+<%- data.lastModified %>

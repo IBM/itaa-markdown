@@ -1,0 +1,41 @@
+
+## Diagram
+
+![<%- data.name %>](../img/<%- data._id %>.png)
+
+### Name
+
+<% if (data.name) { %>
+<%- data.name %>
+<% } %>
+
+### Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+[Expand all](#){ .md-button .same-line }
+
+## Step List
+
+<% if (data.usageSteps) { %>
+    <% data.usageSteps.forEach(function(us){ %>
+
+<details open markdown=1>
+<summary markdown="span"><%- us.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- us.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- us.description %></td></tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+

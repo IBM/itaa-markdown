@@ -1,0 +1,78 @@
+site_name: <%=data.archData.name%>
+
+nav:
+
+  - Table of Content: 
+<% 
+var typeFlag = {};
+var printLvl1 = function (result ){
+    if( !typeFlag[result.templateType]){
+       typeFlag[result.templateType] = true;
+%>
+    - <%=result.templateType + ': ' + result.templateType+'.md'%>
+<%
+    }
+}
+var printLvl2 = function (result ){
+    if( !typeFlag[result.templateType]){
+       typeFlag[result.templateType] = true;
+%>
+    - <%=result.templateType%>:
+<%
+    }
+%>
+      - <%=result.instanceName + ': ' + result.templateType+'/'+result.instanceId%>.md
+<%
+}
+data.templates.forEach(template=>{
+    if( data.results ){
+        for( var i=0; i< data.results.length; i++) {
+          var result = data.results[i];
+          if( result.templateType == template){
+                if( template == 'Overview' ||  template == 'Business Challenge' 
+                    ||  template == 'Information' 
+                    ||  template == 'System Context' ){
+                    printLvl1(result);
+                } else {
+                    printLvl2(result);
+                }
+
+          }
+        }
+    }
+});
+%>
+
+  <%# - Additional: %> 
+  <%# - Sub-level Diagrams: Sub-level Diagrams.md  %>     
+
+
+markdown_extensions:
+  - md_in_html
+  - toc:
+      permalink: True
+  - footnotes
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+
+theme:
+  name: material
+  palette:
+    primary: 'black'
+    accent: 'red'
+  font:
+    text: 'IBM Plex Sans'
+    code: 'IBM Plex Mono'
+  features:
+    # - navigation.tabs
+    - navigation.tabs.sticky
+  custom_dir:
+    theme
+
+extra_css:
+  - extra.css
+extra_javascript:
+  - extra.js

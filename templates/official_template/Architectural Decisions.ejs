@@ -1,0 +1,87 @@
+
+
+# <%- data.id %>
+
+### Name
+
+<%- data.name %>
+
+### Status
+
+<%- data.status %>
+
+### Last Update
+
+<%- data.lastUpdated %>
+
+### Subject Area
+
+<%- data.subjectArea %>
+
+### Topic
+
+<%- data.topic %>
+
+### Issue or Problem Statement
+
+<%- data.problemStatement %>
+
+### Assumptions
+
+<%- data.assumptions %>
+
+### Motivation
+
+<%- data.motivation %>
+
+### Notes
+
+<%- data.notes %>
+
+[Expand all](#){ .md-button .same-line }
+
+### Alternatives
+
+<% if (data.alternatives) { %>
+    <% data.alternatives.forEach(function(al){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- al.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- al.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- al.description %></td></tr>
+    <tr><td> <strong>Best Applied</strong> </td><td><%- al.bestApplied %></td></tr>
+    <tr><td> <strong>Contraindications</strong> </td><td><%- al.contraindications %></td></tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Decision
+
+<%- data.decision %>
+
+### Justification
+
+<%- data.justification %>
+
+### Implications
+
+<%- data.implications %>
+
+### Derived Requirements
+
+<%- data.derivedRequirements %>
+
+### Related Decisions
+
+<%- data.relatedDecisions %>
+

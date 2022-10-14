@@ -1,0 +1,76 @@
+
+## Diagram
+
+![<%- data.name %>](../img/<%- data._id %>.png)
+
+### Display
+
+Connection Name (on)
+
+### Name
+
+<% if (data.name) { %>
+<%- data.name %>
+<% } %>
+
+### Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+## Element
+
+[Expand all](#){ .md-button .diff-line }
+
+
+### Timeline
+
+<% if (data.timelines) { %>
+    <% data.timelines.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+
+### Component Message
+
+<% if (data.componentMessages) { %>
+    <% data.componentMessages.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <tr><td> <strong>Type</strong> </td><td><%- ele.type %></td></tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+
+

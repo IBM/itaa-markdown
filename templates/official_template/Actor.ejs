@@ -1,0 +1,34 @@
+### Actor
+
+
+<% if (data.actors) { %>
+    <% data.actors.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <tr><td> <strong>Type</strong> </td><td><%- ele.type %></td></tr>
+    <tr>
+        <td> <strong>Generic Group</strong> </td>
+        <td>
+        <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
+                <% data.genericGroup[ele._id].forEach(gg=> { %>
+                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
+                <div><%- gg.description %></div>
+                <% }) %>
+                <% } %>
+        </td>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>

@@ -1,0 +1,104 @@
+
+## Diagram
+
+![<%- data.name %>](../img/<%- data._id %>.png)
+
+### Display
+
+Connection Name (on)
+
+### Name
+
+<% if (data.name) { %>
+<%- data.name %>
+<% } %>
+
+### Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+## Element
+
+[Expand all](#){ .md-button .diff-line }
+
+
+### Entities
+
+<% if (data.entities) { %>
+    <% data.entities.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <tr>
+        <td> <strong>Attributes</strong> </td>
+        <% if (ele.attributes) { %>
+        <td>
+                <% ele.attributes.forEach(gg=> { %>
+                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
+                <div><%- gg.description %></div>
+                <% }) %>
+            </td>
+        <% } %>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Relationships
+
+<% if (data.relationships) { %>
+    <% data.relationships.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead><tr><th></th><th></th></tr></thead>
+    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
+    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <tr>
+        <td> <strong>Attributes</strong> </td>
+        <% if (ele.attributes) { %>
+        <td>
+                <% ele.attributes.forEach(gg=> { %>
+                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
+                <div><%- gg.description %></div>
+                <% }) %>
+            </td>
+        <% } %>
+    </tr>
+    <tr>
+        <td> <strong>Relationship Connections</strong> </td>
+        <% if (ele.relationshipConnections) { %>
+        <td>
+                <% ele.relationshipConnections.forEach(gg=> { %>
+                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
+                <div><%- gg.connectedEntity.name %></div>
+                <% }) %>
+            </td>
+        <% } %>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+

@@ -1,0 +1,55 @@
+# This is an example mkdocs.yml file, it will be overwritten during the GitHub Pages exporting
+
+# Site Information
+site_name: {architecture_name}
+site_url: "https://pages.github.ibm.com/{github_account}/{repo}"
+# site_description: {architecture_name}
+
+# # Repository Information
+# repo_name: '{repo}'
+# repo_url: 'https://github.ibm.com/{github_account}/{repo}'
+# edit_uri: 'edit/main/docs'
+docs_dir: 'docs'
+# # site_dir: 'site'
+# remote_branch: 'gh-pages'
+# remote_name: 'origin'
+
+# Server info
+dev_addr: '127.0.0.1:8000'
+
+nav:
+  - Table of Content: 
+    - Information: index.md
+    # ...
+
+markdown_extensions:
+  - md_in_html
+  - toc:
+      permalink: True
+  - footnotes
+  - tables
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+
+theme:
+  name: material
+  palette:
+    primary: 'black'
+    accent: 'red'
+  font:
+    text: 'IBM Plex Sans'
+    code: 'IBM Plex Mono'
+  logo: assets/ca.svg
+  favicon: assets/ca.svg     
+  features:
+    # - navigation.tabs
+    - navigation.tabs.sticky
+  custom_dir:
+    theme
+
+extra_css:
+  - extra.css
+extra_javascript:
+  - extra.js
