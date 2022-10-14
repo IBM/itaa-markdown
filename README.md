@@ -2,7 +2,7 @@
 
 
 ## Introduction
-This is the markdown repository template for the "Export to GitHub Pages" utility in IBM IT Architect Assistant.  
+This is the markdown repository template for the "Export to GitHub Pages" utility in IBM IT Architect Assistant (aka Cognitive Architect).  
 
 The export utility creates markdown files containing the architecture information and then generates the corresponding GitHub Pages of the architecture using [MkDocs](https://www.mkdocs.org), [ejs](https://ejs.co/), [MkDocs Awesome Pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).  
 
