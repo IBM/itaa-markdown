@@ -25,6 +25,9 @@ When the export is successfully executed:
 - a json file containing all the architecture information (`archData_[architecture-name].json`) will also be created
 
 
+If there are concerns about who can view/access the generated GitHub Pages, read the [Access Considerations](#access-considerations) section before proceeding.
+
+
 
 ## Setup
 
@@ -85,6 +88,22 @@ You can retrieve the URL by clicking on the Code button for your repository and 
 
 
 
+## Access Considerations
+
+GitHub Pages is designed to host your personal, organization, or project pages from a GitHub repository. In the [GitHub Pages Docs](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), the following is called out:
+
+    GitHub Pages is available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server.
+
+It is important to understand who can view the Pages.
+- In Public GitHub, since the repository has to be public, anyone can see the generated GitHub Pages
+- In Enterprise GitHub, the repository can be private, BUT the *published site will be visible to all enterprise members*.
+
+To limit access to your GitHub Pages, one option is to serve up the pages from a local machine.
+- Execute steps 1 through 3 outlined in the [Refreshing your Pages](#refreshing-your-pages-using-command-line-execution) section
+- When the `make serve` command is completed, you can view the pages using the URL generated, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
+
+
+
 ## Customization
 
 The export utility uses [MkDocs](https://www.mkdocs.org) with the [ejs](https://ejs.co/) template engine to generate the markdown files. The [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/) theme for [MkDocs](https://www.mkdocs.org) is then used to generate the GitHub Pages.
@@ -116,13 +135,13 @@ To change the look & feel of your pages:
 If you customize the theme and/or *.MD files, instead of using the Export utility in IBM IT Architect Assistant, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
 
 In a terminal window:
-- Download your repository to your local machine
-  - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
-- In the directory where your repository is, run `make venv` to create the python environment
-- Run `make serve` to start up the MkDocs engine on your local machine
-- Update the docs/*.md files as needed
-- Commit changes to your repository
-- Run `make deploy` to deploy the changes
+1. Download your repository to your local machine
+     - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
+2. In the directory where your repository is, run `make venv` to create the python environment
+3. Run `make serve` to start up the MkDocs engine on your local machine
+4. Update the docs/*.md files as needed
+5. Commit changes to your repository
+6. Run `make deploy` to deploy the changes
 
 
 ⚠️ Warning: If there are updates to your architecture after executing the Export function, DO NOT USE this approach. Run the Export utility in IBM IT Architect Assistant to generate the latest updates.
