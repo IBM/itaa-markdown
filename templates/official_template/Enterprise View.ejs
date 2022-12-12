@@ -3,9 +3,7 @@
 
 ![<%- data.name %>](../img/<%- data._id %>.png)
 
-### Display
 
-Connection Name (on)
 
 ### Name
 
@@ -18,6 +16,20 @@ Connection Name (on)
 <% if (data.description) { %>
 <%- data.description %>
 <% } %>
+
+
+### Reference(s)
+
+<% if (data.reference) { %>
+    <% data.reference.forEach(reference => { %>
+        <% if (reference.name && reference.url) { %>
+[<%- reference.name %>](<%- reference.url %>)
+        <% } else { %>
+[<%- reference.url %>](<%- reference.url %>)
+         <% } %>
+    <% }) %>
+<% } %>
+
 
 ## Element
 
@@ -34,20 +46,34 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
-    <tr><td> <strong>Type</strong> </td><td><%- ele.type %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <tr>
+        <td> <strong>Type</strong> </td>
+        <td><%- ele.type %></td>
+    </tr>
     <tr>
         <td> <strong>Generic Group</strong> </td>
-        <td>
+<td>
         <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
                 <% data.genericGroup[ele._id].forEach(gg=> { %>
                 <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
                 <div><%- gg.description %></div>
                 <% }) %>
                 <% } %>
-        </td>
+</td>
     </tr>
 </table>
 
@@ -70,9 +96,35 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <% if (ele.subDiagramID) { %>
+    <tr>
+        <td> <strong>Sub-Diagram</strong> </td>
+        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
+        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+                <%- ele.subDiagramId %>
+        </a></td>
+        <% } else { %>
+        <td>
+            <%- ele.subDiagramId %>
+        </td>
+        <% } %>
+        
+    </tr>
+    <% } %>
 </table>
 
 
@@ -94,9 +146,35 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <% if (ele.subDiagramID) { %>
+    <tr>
+        <td> <strong>Sub-Diagram</strong> </td>
+        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
+        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+                <%- ele.subDiagramId %>
+        </a></td>
+        <% } else { %>
+        <td>
+            <%- ele.subDiagramId %>
+        </td>
+        <% } %>
+        
+    </tr>
+    <% } %>
 </table>
 
 
@@ -118,9 +196,20 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
 </table>
 
 

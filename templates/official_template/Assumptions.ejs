@@ -9,6 +9,20 @@
 <% } %>
 
 
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Assumption identified by
+
+<% if (data.identifiedBy) { %>
+<%- data.identifiedBy %>
+<% } %>
+
+
 ### Confidence Level
 
 <% if (data.confidenceLevel) { %>
@@ -23,11 +37,9 @@
 <% } %>
 
 
-### Assumption identified by
+### Date Raised
 
-<% if (data.identifiedBy) { %>
-<%- data.identifiedBy %>
-<% } %>
+<%- data.raisedDate %>
 
 
 ### Review Date
@@ -37,10 +49,17 @@
 <% } %>
 
 
-### Close Date
+### Date Closed
 
 <% if (data.closedDate) { %>
 <%- data.closedDate %>
+<% } %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
 <% } %>
 
 
@@ -48,3 +67,7 @@
 
 <%- data.isKey %>
 
+
+### External
+
+<%- data.isExternal %>

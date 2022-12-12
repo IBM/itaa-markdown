@@ -9,6 +9,20 @@
 <% } %>
 
 
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Owner
+
+<% if (data.owner) { %>
+<%- data.owner %>
+<% } %>
+
+
 ### Effect on Plan
 
 <% if (data.effectOnPlan) { %>
@@ -23,13 +37,6 @@
 <% } %>
 
 
-### Owner
-
-<% if (data.owner) { %>
-<%- data.owner %>
-<% } %>
-
-
 ### Associated Risk ID
 
 <% if (data.associatedRiskId) { %>
@@ -37,14 +44,29 @@
 <% } %>
 
 
-### Closed Date
+### Date Raised
 
-<% if (data.closedDate) { %>
+<%- data.raisedDate %>
+
+
+### Date Closed
+
 <%- data.closedDate %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
 <% } %>
 
 
 ### Is this a Key Dependency?
 
 <%- data.isKey %>
+
+
+### External
+
+<%- data.isExternal %>
 

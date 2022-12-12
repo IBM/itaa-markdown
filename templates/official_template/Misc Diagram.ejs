@@ -16,6 +16,19 @@
 <% } %>
 
 
+### Reference(s)
+
+<% if (data.reference) { %>
+    <% data.reference.forEach(reference => { %>
+        <% if (reference.name && reference.url) { %>
+[<%- reference.name %>](<%- reference.url %>)
+        <% } else { %>
+[<%- reference.url %>](<%- reference.url %>)
+         <% } %>
+    <% }) %>
+<% } %>
+
+
 ### Label
 
 <% if (data.labels) { %>

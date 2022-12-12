@@ -9,17 +9,24 @@
 <% } %>
 
 
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Owner
+
+<% if (data.personResponsible) { %>
+<%- data.personResponsible %>
+<% } %>
+
+
 ### Probability
 
 <% if (data.probability) { %>
 <%- data.probability %>
-<% } %>
-
-
-### Effort / Cost
-
-<% if (data.effort) { %>
-<%- data.effort %>
 <% } %>
 
 
@@ -30,6 +37,13 @@
 <% } %>
 
 
+### Effort / Cost
+
+<% if (data.effort) { %>
+<%- data.effort %>
+<% } %>
+
+
 ### Contingency / Mitigation recommendation
 
 <% if (data.recommendation) { %>
@@ -37,11 +51,9 @@
 <% } %>
 
 
-### Person Responsible
+### Date Raised
 
-<% if (data.personResponsible) { %>
-<%- data.personResponsible %>
-<% } %>
+<%- data.raisedDate %>
 
 
 ### Review Date
@@ -49,7 +61,24 @@
 <%- data.reviewDate %>
 
 
+### Date Closed
+
+<%- data.closedDate %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
+<% } %>
+
+
 ### Is this a Key Risks?
 
 <%- data.isKey %>
+
+
+### External
+
+<%- data.isExternal %>
 
