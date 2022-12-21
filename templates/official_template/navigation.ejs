@@ -35,12 +35,9 @@ var printLvl1 = function (result, hasContent ){
 var printLvl2 = function (result, hasContent ){
   if(result.artifactTypeName.includes('Business Challenge') ||  result.artifactTypeName.includes('System Context')){
        typeFlag[result.name] = true;
+       var content = result.content[0];
 %>
-      - <%=result.name + ': '%>
-<%
-        var content = result.content[0];
-%>
-        - '<%= content.instanceName %>' <%=': ' + content.templateType%>.md
+      - <%=result.name + ': ' + content.templateType%>.md
 <%
     }else if( !typeFlag[result.name] && hasContent){
        typeFlag[result.name] = true;
@@ -62,12 +59,9 @@ var printLvl2 = function (result, hasContent ){
 var printLvl3 = function (result, hasContent ){
     if(result.artifactTypeName.includes('Business Challenge') ||  result.artifactTypeName.includes('System Context')){
        typeFlag[result.name] = true;
+       var content = result.content[0];
 %>
-        - <%=result.name + ': '%>
-<%
-        var content = result.content[0];
-%>
-          - '<%= content.instanceName %>' <%=': ' + content.templateType%>.md
+        - <%=result.name + ': ' + content.templateType%>.md
 <%
     }else if( !typeFlag[result.name] && hasContent){
        typeFlag[result.name] = true;
