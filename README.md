@@ -128,7 +128,113 @@ To change the look & feel of your pages:
 
 ### Customization Examples
 
-- Coming Soon...
+
+#### Theme Customization
+
+1. Copy the `mkdocs.ejs` file to be changed from the *templates/official_template* folder to the *templates/user_template* one.
+  - Note: Do not change the name of the file(s). 
+2. Modify the content as needed.(refer to [Material for MkDocs - Customization](https://squidfunk.github.io/mkdocs-material/customization/) )
+3. Re-submit the Export request in IBM IT Architect Assistant.
+
+##### Example 1: change theme color
+
+default color is **black** and accent color is **red**
+
+`mkdocs.ejs`
+```
+  palette:
+    primary: 'black'
+    accent: 'red'
+```
+![default color](https://media.github.ibm.com/user/235071/files/3b935c44-8941-45a2-8d04-ec242aac68d0)
+
+change color to **indigo** and accent color is **green**
+
+`mkdocs.ejs`
+```
+  palette:
+    primary: 'indigo'
+    accent: 'green'
+```
+
+![update color](https://media.github.ibm.com/user/235071/files/7c83a957-625d-46f1-85f9-99566f2bd1e6)
+
+##### Example 2: change site name
+
+default site name is your arch name
+
+`mkdocs.ejs`
+```
+site_name: <%=data.archData.name%>
+```
+![default site name](https://media.github.ibm.com/user/235071/files/3b935c44-8941-45a2-8d04-ec242aac68d0)
+
+change site name
+
+`mkdocs.ejs`
+```
+site_name: Here is the site name
+```
+![update site name](https://media.github.ibm.com/user/235071/files/8af3c536-a668-46cb-8c97-e2854633724a)
+
+
+##### Example 3: Set up the footer
+
+default footer
+
+![default footer](https://media.github.ibm.com/user/235071/files/adf41473-5e98-47b8-b1bb-a14d136c6c52)
+
+Add Copyright notice
+
+`mkdocs.ejs`
+```
+
+copyright: Copyright &copy; 2021 - 2022 Qing Qing Fu
+
+extra_css:
+  - extra.css
+extra_javascript:
+  - extra.js
+```
+![copyright](https://media.github.ibm.com/user/235071/files/6cdda1c3-64c2-474e-86a6-b4b3f51f5a90)
+
+Add social links
+
+```
+
+extra:
+  social:
+    - icon: fontawesome/solid/paper-plane
+      link: mailto:fuqqing@cn.ibm.com
+    - icon: fontawesome/brands/github
+      link: https://github.ibm.com/fuqqing/CogArch_Markdown
+
+extra_css:
+  - extra.css
+extra_javascript:
+  - extra.js
+```
+
+![mail link](https://media.github.ibm.com/user/235071/files/273ec882-dcca-4f75-b3ae-f1ee1fc322eb)
+![github link](https://media.github.ibm.com/user/235071/files/44e5a8c0-3f09-4970-a8a3-e0dea6518801)
+
+
+##### Example 4: change theme code
+
+ 💡 Tip: If you want to add additional CSS or JS for material theme, please first copy the `mkdocs.ejs` file from the *templates/official_template* folder to the *templates/user_template* one. Then you can change the code in **/Theme** folder and it won't be overwritten.
+
+`extra.css`
+```
+.md-footer {
+    background-color: #b5a240;
+}
+```
+
+new footer backgroud will look like below:
+![footer backgroud](https://media.github.ibm.com/user/235071/files/de44f60f-15a4-4af3-823d-a07fd531b703)
+
+
+
 
 
 ## Refreshing Your Pages using Command Line Execution

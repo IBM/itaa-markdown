@@ -9,10 +9,10 @@
 <% } %>
 
 
-### Priority
+### BU / Department / Competency
 
-<% if (data.priority) { %>
-<%- data.priority %>
+<% if (data.bu) { %>
+<%- data.bu %>
 <% } %>
 
 
@@ -23,17 +23,17 @@
 <% } %>
 
 
-### Issue Responsibility
+### Owner
 
 <% if (data.issueResponsibility) { %>
 <%- data.issueResponsibility %>
 <% } %>
 
 
-### Review Date
+### Priority
 
-<% if (data.reviewDate) { %>
-<%- data.reviewDate %>
+<% if (data.priority) { %>
+<%- data.priority %>
 <% } %>
 
 
@@ -44,7 +44,37 @@
 <% } %>
 
 
+### Date Raised
+
+<%- data.raisedDate %>
+
+
+### Review Date
+
+<% if (data.reviewDate) { %>
+<%- data.reviewDate %>
+<% } %>
+
+
+### Date Closed
+
+<% if (data.closedDate) { %>
+<%- data.closedDate %>
+<% } %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
+<% } %>
+
+
 ### Is this a Key Issue?
 
 <%- data.isKey %>
 
+
+### External
+
+<%- data.isExternal %>

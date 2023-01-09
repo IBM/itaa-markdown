@@ -1,64 +1,43 @@
+# Site Information
 site_name: <%=data.archData.name%>
+site_url: <%=data.archData.url%>
+# site_description: <%=data.archData.name%>
 
-nav:
+# # Repository Information
+# repo_name: <%=data.archData.repoName%>
+# repo_url: <%=data.archData.url%>
+# edit_uri: 'edit/main/docs'
+docs_dir: 'docs'
+# # site_dir: 'site'
+# remote_branch: 'gh-pages'
+# remote_name: 'origin'
 
-  - Table of Content: 
-<% 
-var typeFlag = {};
-var printLvl1 = function (result ){
-    if( !typeFlag[result.templateType]){
-       typeFlag[result.templateType] = true;
-%>
-    - <%=result.templateType + ': ' + result.templateType+'.md'%>
-<%
-    }
-}
-var printLvl2 = function (result ){
-    if( !typeFlag[result.templateType]){
-       typeFlag[result.templateType] = true;
-%>
-    - <%=result.templateType%>:
-<%
-    }
-%>
-      - <%=result.instanceName + ': ' + result.templateType+'/'+result.instanceId%>.md
-<%
-}
-data.templates.forEach(template=>{
-    if( data.results ){
-        for( var i=0; i< data.results.length; i++) {
-          var result = data.results[i];
-          if( result.templateType == template){
-                if( template == 'Overview' ||  template == 'Business Challenge' 
-                    ||  template == 'Information' 
-                    ||  template == 'System Context' ){
-                    printLvl1(result);
-                } else {
-                    printLvl2(result);
-                }
+# Server info
+# dev_addr: '127.0.0.1:8000'
 
-          }
-        }
-    }
-});
-%>
-
-  <%# - Additional: %> 
-  <%# - Sub-level Diagrams: Sub-level Diagrams.md  %>     
+<%- include(data.navPath, {data: data}); %>    
 
 
 markdown_extensions:
+
   - md_in_html
+
   - toc:
+
       permalink: True
+
   - footnotes
+
   - tables
+
   - admonition
   - pymdownx.details
   - pymdownx.superfences
+
   - attr_list
 
 theme:
+
   name: material
   palette:
     primary: 'black'
@@ -66,6 +45,8 @@ theme:
   font:
     text: 'IBM Plex Sans'
     code: 'IBM Plex Mono'
+  logo: assets/ca.svg
+  favicon: assets/ca.svg 
   features:
     # - navigation.tabs
     - navigation.tabs.sticky

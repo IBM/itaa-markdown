@@ -3,9 +3,7 @@
 
 ![<%- data.name %>](../img/<%- data._id %>.png)
 
-### Display
 
-Connection Name (on)
 
 ### Name
 
@@ -18,6 +16,21 @@ Connection Name (on)
 <% if (data.description) { %>
 <%- data.description %>
 <% } %>
+
+
+### Reference(s)
+
+<% if (data.reference) { %>
+    <% data.reference.forEach(reference => { %>
+        <% if (reference.name && reference.url) { %>
+[<%- reference.name %>](<%- reference.url %>)
+        <% } else { %>
+[<%- reference.url %>](<%- reference.url %>)
+         <% } %>
+    <% }) %>
+<% } %>
+
+
 
 ## Element
 
@@ -34,9 +47,20 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
 </table>
 
 
@@ -58,10 +82,24 @@ Connection Name (on)
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- ele.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- ele.description %></td></tr>
-    <tr><td> <strong>Type</strong> </td><td><%- ele.type %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <tr>
+        <td> <strong>Type</strong> </td>
+        <td><%- ele.type %></td>
+    </tr>
 </table>
 
 

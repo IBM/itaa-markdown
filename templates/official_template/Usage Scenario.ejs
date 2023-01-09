@@ -15,6 +15,20 @@
 <%- data.description %>
 <% } %>
 
+
+### Reference(s)
+
+<% if (data.reference) { %>
+    <% data.reference.forEach(reference => { %>
+        <% if (reference.name && reference.url) { %>
+[<%- reference.name %>](<%- reference.url %>)
+        <% } else { %>
+[<%- reference.url %>](<%- reference.url %>)
+         <% } %>
+    <% }) %>
+<% } %>
+
+
 [Expand all](#){ .md-button .same-line }
 
 ## Step List
@@ -27,9 +41,20 @@
 
 <table>
     <caption></caption>
-    <thead><tr><th></th><th></th></tr></thead>
-    <tr><td> <strong>Name</strong> </td><td><%- us.name %></td></tr>
-    <tr><td> <strong>Description</strong> </td><td><%- us.description %></td></tr>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- us.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- us.description %></td>
+    </tr>
 </table>
 
 
