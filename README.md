@@ -241,6 +241,8 @@ To change the look & feel of your pages:
 <hr>
 
 ## Refreshing Your Pages using Command Line Execution
+*---We are in the process of refining this process. Ignore content in this section for now---.*
+
 If you customize the theme and/or *.MD files, instead of using the Export utility in IBM IT Architect Assistant, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
 
 In a terminal window:
