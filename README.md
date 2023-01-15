@@ -28,32 +28,47 @@ When the export is successfully executed:
 If there are concerns about who can view/access the generated GitHub Pages, read the [Access Considerations](#access-considerations) section before proceeding.
 
 
+<hr>
 
 ## Setup
 
-Before executing the export utility, the following setup is required:
+Before executing the export utility, you will need the following:
+- a GitHub repository to contain the generated markdown docs and GitHub pages
+- a GitHub token for access
 
 
-1. Make a copy of the markdown repository template to your own GitHub repository by one of the following:
+#### *1. Create a GitHub repository based on a markdown repository template*
 
-   - [*Fork*ing](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repository if you are using Public GitHub
-   - *Download* the zip of the markdown repository template and upload to your enterprise repository if you are using Enterprise GitHub 
-   
-    If you are using GitHub Free, your repository has to be set as public. More information on GitHub Pages configuration [here](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
-2. Generate the GitHub token with ***repo***  access. This is needed so that the export utility can generate the appropriate files into your GitHub repo.  
+
+#### For Public GitHub setup
+- go to the [Public GitHub markdown repository template](https://github.com/IBM/itaa-markdown)
+- click on "Use this template" to create a new repository based on the template
+![Public repo template](images/github-public-template-button.png)
+- provide a name for your repository, for eg the architecture name that you are exporting from
+![Public repo name](images/github-public-create-new-repo.png)
+- click on "Create repository from template"
+
+If you are using GitHub Free, your repository has to be set as public. More information on GitHub Pages configuration [here](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).
+
+
+#### *2. Generate the GitHub token with ***repo***  access. This is needed so that the export utility can generate the appropriate files into your GitHub repo.*
+
 For help on creating the token and getting the repository URL, go to [GitHub Repo URL & Token](#github-repo-token--url).
 
 
 💡 Tip: At a minimum, each architecture should have its own git repository! If you want to show different content based on your target audience or purpose, export them to different GitHub repositories.
 
 
+<hr>
 
 ## Usage in IBM IT Architect Assistant : Export Utility
 
 1. Go to the Export / Import menu in IBM IT Architect Assistant
-2. Provide your github repository link and token
-3. Click the Export button
-4. The Export utility will execute in the background and you will be notified and provided with the link to the published pages when the export is done.
+![Export-Import toolbar](images/consolidated-export-3.15.png)
+2. Select Export and click Next
+3. Select GitHub Pages and provide your github repository link and token
+4. Click the Export button
+5. The Export utility will execute in the background and you will be notified and provided with the link to the published pages when the export is done.
 
 
 ⚠️ Warning: Do not close the browser window after the Export request has been submitted! The URL of your GitHub Pages will be returned when the export is completed.
@@ -68,6 +83,7 @@ If you did not see or get the URL, your GitHub Pages can typically be accessed v
 If you get a "*404 - Page/File Not Found*" error, check your repository's Settings -> GitHub Pages for the correct URL.
 
 
+<hr>
 
 ## GitHub Repo Token & URL
 
@@ -87,6 +103,7 @@ Sample HTTPS URLs are:
 You can retrieve the URL by clicking on the Code button for your repository and copy the HTTPS URL.
 
 
+<hr>
 
 ## Access Considerations
 
@@ -103,6 +120,7 @@ To limit access to your GitHub Pages, one option is to serve up the pages from a
 - When the `make serve` command is completed, you can view the pages using the URL generated, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
 
 
+<hr>
 
 ## Customization
 
@@ -131,111 +149,96 @@ To change the look & feel of your pages:
 
 #### Theme Customization
 
-1. Copy the `mkdocs.ejs` file to be changed from the *templates/official_template* folder to the *templates/user_template* one.
-  - Note: Do not change the name of the file(s). 
-2. Modify the content as needed.(refer to [Material for MkDocs - Customization](https://squidfunk.github.io/mkdocs-material/customization/) )
-3. Re-submit the Export request in IBM IT Architect Assistant.
+1. Copy the `mkdocs.ejs` file to be changed from the *templates/official_template* folder to the *templates/user_template* one. 
+   - Do NOT change the name of the file
+   - This is REQUIRED to ensure that any theme customization is not overwritten with each Export action. 
+2. Modify the content as needed (refer to [Material for MkDocs - Customization](https://squidfunk.github.io/mkdocs-material/customization/) for more information).
+3. Re-submit the Export request in Cognitive Architect.
 
-##### Example 1: change theme color
 
-default color is **black** and accent color is **red**
+#### Example 1: Change theme color
 
-`mkdocs.ejs`
-```
+- The default color generated is **black** with accent color of **red**, as shown in the `mkdocs.ejs` file.
+  ```
   palette:
     primary: 'black'
     accent: 'red'
-```
-![default color](https://media.github.ibm.com/user/235071/files/3b935c44-8941-45a2-8d04-ec242aac68d0)
+  ```
+  ![default theme color](images/theme-default-color.png)
 
-change color to **indigo** and accent color is **green**
-
-`mkdocs.ejs`
-```
+- To change the colors, modify the "palette" in the `mkdocs.ejs` file as shown:
+  ```
   palette:
     primary: 'indigo'
     accent: 'green'
-```
-
-![update color](https://media.github.ibm.com/user/235071/files/7c83a957-625d-46f1-85f9-99566f2bd1e6)
-
-##### Example 2: change site name
-
-default site name is your arch name
-
-`mkdocs.ejs`
-```
-site_name: <%=data.archData.name%>
-```
-![default site name](https://media.github.ibm.com/user/235071/files/3b935c44-8941-45a2-8d04-ec242aac68d0)
-
-change site name
-
-`mkdocs.ejs`
-```
-site_name: Here is the site name
-```
-![update site name](https://media.github.ibm.com/user/235071/files/8af3c536-a668-46cb-8c97-e2854633724a)
+  ```
+  The updated colors of the banner and accent will be as follows:
+  ![updated theme color](images/theme-updated-color.png)
 
 
-##### Example 3: Set up the footer
+#### Example 2: Change site name
 
-default footer
+- The default site name is your architecture name, for e.g. "OfferingArchitectureKitTemplate 1202". This is reflected in the `mkdocs.ejs` file as:
+  ```
+  site_name: <%=data.archData.name%>
+  ```
+  ![default site name](images/theme-default-color.png)
 
-![default footer](https://media.github.ibm.com/user/235071/files/adf41473-5e98-47b8-b1bb-a14d136c6c52)
-
-Add Copyright notice
-
-`mkdocs.ejs`
-```
-
-copyright: Copyright &copy; 2021 - 2022 Qing Qing Fu
-
-extra_css:
-  - extra.css
-extra_javascript:
-  - extra.js
-```
-![copyright](https://media.github.ibm.com/user/235071/files/6cdda1c3-64c2-474e-86a6-b4b3f51f5a90)
-
-Add social links
-
-```
-
-extra:
-  social:
-    - icon: fontawesome/solid/paper-plane
-      link: mailto:fuqqing@cn.ibm.com
-    - icon: fontawesome/brands/github
-      link: https://github.ibm.com/fuqqing/CogArch_Markdown
-
-extra_css:
-  - extra.css
-extra_javascript:
-  - extra.js
-```
-
-![mail link](https://media.github.ibm.com/user/235071/files/273ec882-dcca-4f75-b3ae-f1ee1fc322eb)
-![github link](https://media.github.ibm.com/user/235071/files/44e5a8c0-3f09-4970-a8a3-e0dea6518801)
+- To change the site name, modify the site_name in the `mkdocs.ejs` file as shown:
+  ```
+  site_name: Here is the site name
+  ```
+  ![updated site name](images/theme-updated-site-name.png)
 
 
-##### Example 4: change theme code
+#### Example 3: Add additional information in the footer
 
- 💡 Tip: If you want to add additional CSS or JS for material theme, please first copy the `mkdocs.ejs` file from the *templates/official_template* folder to the *templates/user_template* one. Then you can change the code in **/Theme** folder and it won't be overwritten.
+- The default footer is as shown:
+  ![default footer](images/theme-default-footer.png)
 
-`extra.css`
-```
-.md-footer {
-    background-color: #b5a240;
-}
-```
+- To add a Copyright in the footer, update `mkdocs.ejs` with the copyright block:
+  ```
+  copyright:
+    Copyright &copy; 2021 - 2022 Your Name
 
-new footer backgroud will look like below:
-![footer backgroud](https://media.github.ibm.com/user/235071/files/de44f60f-15a4-4af3-823d-a07fd531b703)
+  extra_css:
+    - extra.css
+  extra_javascript:
+    - extra.js
+  ```
+  ![updated footer](images/theme-updated-footer.png)
+
+- To add social links, update with the "extra:" block:
+  ```
+  extra:
+    social:
+      - icon: fontawesome/solid/paper-plane
+        link: mailto:your-email@address.com
+      - icon: fontawesome/brands/github
+        link: https://yourbrandlink/
+
+  extra_css:
+    - extra.css
+  extra_javascript:
+    - extra.js
+  ```
+
+  ![mail-to link](images/theme-footer-mail-to.png)
+  ![github link](images/theme-footer-brand.png)
 
 
+#### Example 4: Change the footer color
+
+- To change the color of the footer, add the following to the end of the `extra.css` file:
+  ```
+  .md-footer {
+      background-color: #b5a240;
+  }
+  ```
+  ![updated footer color](images/theme-updated-footer-color.png)
 
 
+<hr>
 
 ## Refreshing Your Pages using Command Line Execution
 If you customize the theme and/or *.MD files, instead of using the Export utility in IBM IT Architect Assistant, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
