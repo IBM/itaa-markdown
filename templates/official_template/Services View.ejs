@@ -1,8 +1,8 @@
 
+
 ## Diagram
 
 ![<%- data.name %>](../img/<%- data._id %>.png)
-
 
 
 ### Name
@@ -11,11 +11,13 @@
 <%- data.name %>
 <% } %>
 
+
 ### Description
 
 <% if (data.description) { %>
 <%- data.description %>
 <% } %>
+
 
 ### Reference(s)
 
@@ -28,6 +30,7 @@
          <% } %>
     <% }) %>
 <% } %>
+
 
 ## Element
 
@@ -83,7 +86,6 @@
 <% } %>
 
 
-
 ### Subsystem
 
 <% if (data.subSystems) { %>
@@ -131,7 +133,6 @@
 
     <% }); %>
 <% } %>
-
 
 
 ### Logical Component
@@ -184,7 +185,6 @@
 <% } %>
 
 
-
 ### Logical Connector
 
 <% if (data.logicalConnectors) { %>
@@ -217,4 +217,3 @@
 
     <% }); %>
 <% } %>
-
