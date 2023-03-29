@@ -1,0 +1,19 @@
+language: python
+python:
+  - "3.9"
+before_install:
+  - sudo apt-get update
+  - sudo apt-get -y install pandoc
+install:
+- make venv
+script:
+#- sed -i 's/github\.com/github\.ibm.com/g' /home/travis/virtualenv/python3.8*/lib/python3.8/site-packages/pymdownx/magiclink.py
+- make build
+deploy:
+ - provider: pages
+   github-url: github.ibm.com
+   skip_cleanup: true
+   github-token: $GITHUB_TOKEN
+   local_dir: site
+   on:
+     branch: main

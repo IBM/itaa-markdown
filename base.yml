@@ -1,0 +1,69 @@
+# DO NOT EDIT, this is maintained by https://github.ibm.com/oic/handbook-template
+
+# Repository Information
+edit_uri: 'edit/main/docs'
+docs_dir: 'docs'
+site_dir: 'site'
+remote_branch: 'gh-pages'
+remote_name: 'origin'
+
+# Server info
+dev_addr: '127.0.0.1:8000'
+
+# Theme
+theme:
+  name: material
+  custom_dir: theme
+
+  # Static files
+  static_templates:
+    - 404.html
+
+  # Don't include MkDocs' JavaScript
+  include_search_page: false
+  search_index_only: true
+
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - navigation.instant      # Single page instant refresh
+    # - navigation.sections   # top level tabs rendered in sidebar
+    - navigation.tabs         # Navigation tabs across top
+    - navigation.tracking     # URL updated with active anchor
+    - toc.integrate           # Integrate page TOC in left sidebar - wider page
+    # - navigation.sections
+    - navigation.top          # Backup to top button at bottom right
+    # - navigation.expand     # expand left sidebar by default
+    - navigation.tabs.sticky  # tab always displayed
+    - search.suggest
+    - search.share
+    # - content.tabs.link
+  palette:
+    - scheme: slate
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+    - scheme: default
+      primary: black
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+  font:
+    text: 'IBM Plex Sans'
+    code: 'IBM Plex Mono'
+  favicon: 'img/logo-ibm.png'
+  logo: 'img/logo-ibm.png'
+
+# hide:
+#   - navigation         # Hide left navigation
+#   - toc                # Hide right navigation
+
+# extra:
+#     generator: false  # This is an insiders feature
+
+# Extra stylesheet
+extra_css:
+  - 'pdf.css'
