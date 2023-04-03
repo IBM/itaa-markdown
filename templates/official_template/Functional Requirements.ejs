@@ -1,0 +1,84 @@
+
+
+# <%- data.name %>
+
+
+### ID
+
+<%- data.id %>
+
+
+### Name
+
+<%- data.name %>
+
+
+### Description
+
+<%- data.description %>
+
+
+### Impact
+
+<%- data.impact %>
+
+
+### Weight
+
+<%- data.weight %>
+
+
+### Owner
+
+<%- data.owner %>
+
+[Expand all](#){ .md-button .same-line }
+
+
+#### Logical Components
+
+<% if (data.logicalComponents) { %>
+    <% data.logicalComponents.forEach(function(lc){ %>
+        <%# include('user/show', {user: user}) %>
+
+<details open markdown=1>
+<summary markdown="span"><%- lc.name %></summary>
+
+<%# 
+|<!-- --> |<!-- --> |
+| -------- | :----- |
+| **Name** | lc.name |
+| **Description** | lc.description |
+%> 
+
+
+
+<table>
+    <caption></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- lc.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- lc.description %></td>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Review Date
+
+<%- data.reviewDate %>

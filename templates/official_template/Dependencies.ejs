@@ -1,0 +1,72 @@
+
+
+# <%- data.name %>
+
+
+### Dependency Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Owner
+
+<% if (data.owner) { %>
+<%- data.owner %>
+<% } %>
+
+
+### Effect on Plan
+
+<% if (data.effectOnPlan) { %>
+<%- data.effectOnPlan %>
+<% } %>
+
+
+### Required by Date
+
+<% if (data.requiredByDate) { %>
+<%- data.requiredByDate %>
+<% } %>
+
+
+### Associated Risk ID
+
+<% if (data.associatedRiskId) { %>
+<%- data.associatedRiskId %>
+<% } %>
+
+
+### Date Raised
+
+<%- data.raisedDate %>
+
+
+### Date Closed
+
+<%- data.closedDate %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
+<% } %>
+
+
+### Is this a Key Dependency?
+
+<%- data.isKey %>
+
+
+### External
+
+<%- data.isExternal %>

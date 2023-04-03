@@ -1,0 +1,109 @@
+
+nav:
+
+  - Table of Content: 
+<% 
+var typeFlag = {};
+var printLvl1 = function (result, hasContent ){
+    if( !typeFlag[result.name] && hasContent){
+       typeFlag[result.name] = true;
+       var content = result.content;
+      if(content[0].templateType == "Overview"){
+%>
+    - <%=result.name + ': ' + content[0].templateType+'.md'%>
+<%
+      }else if(content[0].templateType == "Information" ){
+%>
+    - <%=result.name + ': ' + 'index.md'%>
+<%          
+      }else{
+%>
+    - <%=result.name + ': '%>
+<%
+       content.forEach(ctt =>{
+%>
+      - '<%= ctt.instanceName %>' <%=': ' + ctt.templateType+'/'+ctt.instanceId%>.md
+<%           
+       });
+      }
+    }else{
+%>
+    - <%=result.name + ': '%>
+<%
+    }
+}
+var printLvl2 = function (result, hasContent ){
+  if(result.artifactTypeName.includes('Business Challenge') ||  result.artifactTypeName.includes('System Context')){
+       typeFlag[result.name] = true;
+       var content = result.content[0];
+%>
+      - <%=result.name + ': ' + content.templateType%>.md
+<%
+    }else if( !typeFlag[result.name] && hasContent){
+       typeFlag[result.name] = true;
+%>
+      - <%=result.name + ': '%>
+<%
+       var content = result.content;
+       content.forEach(ctt =>{
+%>
+        - '<%= ctt.instanceName %>' <%=': ' + ctt.templateType+'/'+ctt.instanceId%>.md
+<%
+      });
+    }else{
+%>
+      - <%=result.name + ': '%>
+<%
+    }
+}
+var printLvl3 = function (result, hasContent ){
+    if(result.artifactTypeName.includes('Business Challenge') ||  result.artifactTypeName.includes('System Context')){
+       typeFlag[result.name] = true;
+       var content = result.content[0];
+%>
+        - <%=result.name + ': ' + content.templateType%>.md
+<%
+    }else if( !typeFlag[result.name] && hasContent){
+       typeFlag[result.name] = true;
+%>
+        - <%=result.name + ': '%>
+<%
+       var content = result.content;
+       content.forEach(ctt =>{
+%>
+          - '<%= ctt.instanceName %>' <%=': ' + ctt.templateType+'/'+ctt.instanceId%>.md
+<%
+      });
+    }else{
+%>
+        - <%=result.name + ': '%>
+<%
+    }
+}
+
+
+data.toc.forEach(section=>{
+  if(section.level == "1"){
+    if(section.content && section.content.length){
+      printLvl1(section, true);
+    }else{
+      printLvl1(section, false);
+    }
+  }
+  if(section.level == "2"){
+    if(section.content && section.content.length){
+      printLvl2(section, true);
+    }else{
+      printLvl2(section, false);
+    }
+  }
+  if(section.level == "3"){
+    if(section.content && section.content.length){
+      printLvl3(section, true);
+    }else{
+      printLvl3(section, false);
+    }
+  }
+  
+});
+%>

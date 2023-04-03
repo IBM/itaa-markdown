@@ -1,0 +1,73 @@
+
+
+# <%- data.name %>
+
+### Assumption Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Assumption identified by
+
+<% if (data.identifiedBy) { %>
+<%- data.identifiedBy %>
+<% } %>
+
+
+### Confidence Level
+
+<% if (data.confidenceLevel) { %>
+<%- data.confidenceLevel %>
+<% } %>
+
+
+### Impact
+
+<% if (data.impact) { %>
+<%- data.impact %>
+<% } %>
+
+
+### Date Raised
+
+<%- data.raisedDate %>
+
+
+### Review Date
+
+<% if (data.reviewDate) { %>
+<%- data.reviewDate %>
+<% } %>
+
+
+### Date Closed
+
+<% if (data.closedDate) { %>
+<%- data.closedDate %>
+<% } %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
+<% } %>
+
+
+### Is this a Key Assumption?
+
+<%- data.isKey %>
+
+
+### External
+
+<%- data.isExternal %>

@@ -1,0 +1,219 @@
+
+
+## Diagram
+
+![<%- data.name %>](../img/<%- data._id %>.png)
+
+
+### Name
+
+<% if (data.name) { %>
+<%- data.name %>
+<% } %>
+
+
+### Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### Reference(s)
+
+<% if (data.reference) { %>
+    <% data.reference.forEach(reference => { %>
+        <% if (reference.name && reference.url) { %>
+[<%- reference.name %>](<%- reference.url %>)
+        <% } else { %>
+[<%- reference.url %>](<%- reference.url %>)
+         <% } %>
+    <% }) %>
+<% } %>
+
+
+## Element
+
+[Expand all](#){ .md-button .diff-line }
+
+
+### Actor
+
+<% if (data.actors) { %>
+    <% data.actors.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <tr>
+        <td> <strong>Type</strong> </td>
+        <td><%- ele.type %></td>
+    </tr>
+    <tr>
+        <td> <strong>Generic Group</strong> </td>
+<td>
+        <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
+                <% data.genericGroup[ele._id].forEach(gg=> { %>
+                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
+                <div><%- gg.description %></div>
+                <% }) %>
+                <% } %>
+</td>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Subsystem
+
+<% if (data.subSystems) { %>
+    <% data.subSystems.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <% if (ele.subDiagramID) { %>
+    <tr>
+        <td> <strong>Sub-Diagram</strong> </td>
+        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
+        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+                <%- ele.subDiagramId %>
+        </a></td>
+        <% } else { %>
+        <td>
+            <%- ele.subDiagramId %>
+        </td>
+        <% } %>
+        
+    </tr>
+    <% } %>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Logical Component
+
+<% if (data.logicalComponents) { %>
+    <% data.logicalComponents.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+    <% if (ele.subDiagramID) { %>
+    <tr>
+        <td> <strong>Sub-Diagram</strong> </td>
+        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
+        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+                <%- ele.subDiagramId %>
+        </a></td>
+        <% } else { %>
+        <td>
+            <%- ele.subDiagramId %>
+        </td>
+        <% } %>
+        
+    </tr>
+    <% } %>
+    
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>
+
+
+### Logical Connector
+
+<% if (data.logicalConnectors) { %>
+    <% data.logicalConnectors.forEach(function(ele){ %>
+
+<details markdown=1>
+<summary markdown="span"><%- ele.name %></summary>
+
+<table>
+    <caption></caption>
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tr>
+        <td> <strong>Name</strong> </td>
+        <td><%- ele.name %></td>
+    </tr>
+    <tr>
+        <td> <strong>Description</strong> </td>
+        <td><%- ele.description %></td>
+    </tr>
+</table>
+
+
+</details>
+
+
+    <% }); %>
+<% } %>

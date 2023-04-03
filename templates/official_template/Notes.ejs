@@ -1,0 +1,14 @@
+
+
+# <%- data.name %>
+
+
+<% if (data.labels) { %>
+<% data.labels.forEach(label => { %>
+`<%- label %>`<% }) %>
+<% } %>
+
+
+<% if (data.content) { %>
+<%- data.content %>
+<% } %>

@@ -1,0 +1,63 @@
+# Site Information
+site_name: <%=data.archData.name%>
+site_url: <%=data.archData.url%>
+# site_description: <%=data.archData.name%>
+
+# # Repository Information
+# repo_name: <%=data.archData.repoName%>
+# repo_url: <%=data.archData.url%>
+# edit_uri: 'edit/main/docs'
+docs_dir: 'docs'
+# # site_dir: 'site'
+# remote_branch: 'gh-pages'
+# remote_name: 'origin'
+
+# Server info
+# dev_addr: '127.0.0.1:8000'
+
+<%- include(data.navPath, {data: data}); %>    
+
+
+markdown_extensions:
+
+  - md_in_html
+
+  - toc:
+
+      permalink: True
+
+  - footnotes
+
+  - tables
+
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
+  - attr_list
+
+plugins:
+  - glightbox
+  - search
+
+theme:
+
+  name: material
+  palette:
+    primary: 'black'
+    accent: 'red'
+  font:
+    text: 'IBM Plex Sans'
+    code: 'IBM Plex Mono'
+  logo: assets/ca.svg
+  favicon: assets/ca.svg 
+  features:
+    # - navigation.tabs
+    - navigation.tabs.sticky
+  custom_dir:
+    theme
+
+extra_css:
+  - extra.css
+extra_javascript:
+  - extra.js

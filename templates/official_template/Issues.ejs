@@ -1,0 +1,81 @@
+
+
+# <%- data.name %>
+
+
+### Issue Description
+
+<% if (data.description) { %>
+<%- data.description %>
+<% } %>
+
+
+### BU / Department / Competency
+
+<% if (data.bu) { %>
+<%- data.bu %>
+<% } %>
+
+
+### Raised by
+
+<% if (data.raisedBy) { %>
+<%- data.raisedBy %>
+<% } %>
+
+
+### Owner
+
+<% if (data.issueResponsibility) { %>
+<%- data.issueResponsibility %>
+<% } %>
+
+
+### Priority
+
+<% if (data.priority) { %>
+<%- data.priority %>
+<% } %>
+
+
+### Action
+
+<% if (data.action) { %>
+<%- data.action %>
+<% } %>
+
+
+### Date Raised
+
+<%- data.raisedDate %>
+
+
+### Review Date
+
+<% if (data.reviewDate) { %>
+<%- data.reviewDate %>
+<% } %>
+
+
+### Date Closed
+
+<% if (data.closedDate) { %>
+<%- data.closedDate %>
+<% } %>
+
+
+### Comments
+
+<% if (data.comments) { %>
+<%- data.comments %>
+<% } %>
+
+
+### Is this a Key Issue?
+
+<%- data.isKey %>
+
+
+### External
+
+<%- data.isExternal %>
