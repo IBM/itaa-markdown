@@ -15,18 +15,18 @@ repo_url: 'https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitec
 
 # Specify a navigation structure for the first page, uses awesome-pages
 # https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
-nav:
-    - Intro: index.md
-    - ...
+#nav:
+#    - Intro: index.md
+#    - ...
 
 # Copyright
-copyright: <a href="/about/">CognitiveArchitectSiteAuthor</a>.
+#copyright: <a href="/about/">CognitiveArchitectSiteAuthor</a>.
 
 # Extra links as icons at the bottom of the page
 extra:
   social:
-    - icon: fontawesome/brands/github
-      link: https://github.ibm.com/oic/
+#     - icon: fontawesome/brands/github
+#       link: https://github.ibm.com/oic/
     - icon: fontawesome/solid/globe
       link: https://www.ibm.com/
 
@@ -42,7 +42,7 @@ markdown_extensions:
   - meta
   - toc:
       permalink: true
-      toc_depth: 4
+      toc_depth: 1
   - smarty:
       smart_quotes: false
   - pymdownx.betterem:
@@ -112,8 +112,9 @@ markdown_extensions:
 
 # Configure the PDF export plugin
 plugins:
+  - glightbox
   - search
-  - inline-svg
+#   - inline-svg
   - table-reader
   - git-revision-date-localized:
       fallback_to_build_date: true
@@ -124,6 +125,9 @@ plugins:
       strict: false
   - minify:
       minify_html: true
+#  - enumerate-headings:
+#      strict: false 
+#      toc_depth: 3      
   - blog:
       format: "(%m/%d/%y)"
       folder: "blog"
@@ -135,42 +139,42 @@ plugins:
       media_type: print
       enabled_if_env: ENABLE_PDF_EXPORT
       combined: false
-  - with-pdf: # This creates a single PDF document for the whole site
-      author: CognitiveArchitectSiteAuthor
-      copyright: Copyright &copy; CognitiveArchitectSiteAuthor
-      cover: true
-      back_cover: false
-      #
-      cover_title: CognitiveArchitectHandbookName
-      cover_subtitle: CognitiveArchitectSiteDescription
-      cover_logo: 'img/logo-ibm.png'
-      #custom_template_path: TEMPLATES PATH
-      #
-      toc_title: Contents
-      # heading_shift: false
-      toc_level: 2
-      #ordered_chapter_level: 2
-      #excludes_children:
-      #    - 'release-notes/:upgrading'
-      #    - 'release-notes/:changelog'
-      #
-      exclude_pages:
-          - '99.about/'
-          - 'blog'
-      #    - 'appendix/contribute/'
-      #convert_iframe:
-      #    - src: IFRAME SRC
-      #      img: POSTER IMAGE URL
-      #      text: ALTERNATE TEXT
-      #    - src: ...
-      #two_columns_level: 3
-      #
-      # render_js: true
-      #headless_chrome_path: headless-chromium
-      #
-      output_path: ./pdf/CognitiveArchitectRepoDir.pdf
-      enabled_if_env: ENABLE_PDF_EXPORT
-      #
-      debug_html: true
-      #show_anchors: true
-      verbose: false
+#   - with-pdf: # This creates a single PDF document for the whole site
+#       author: CognitiveArchitectSiteAuthor
+#       copyright: Copyright &copy; CognitiveArchitectSiteAuthor
+#       cover: true
+#       back_cover: false
+#       #
+#       cover_title: CognitiveArchitectHandbookName
+#       cover_subtitle: CognitiveArchitectSiteDescription
+#       cover_logo: 'img/logo-ibm.png'
+#       #custom_template_path: TEMPLATES PATH
+#       #
+#       toc_title: Contents
+#       # heading_shift: false
+#       toc_level: 2
+#       #ordered_chapter_level: 2
+#       #excludes_children:
+#       #    - 'release-notes/:upgrading'
+#       #    - 'release-notes/:changelog'
+#       #
+#       exclude_pages:
+#           - '99.about/'
+#           - 'blog'
+#       #    - 'appendix/contribute/'
+#       #convert_iframe:
+#       #    - src: IFRAME SRC
+#       #      img: POSTER IMAGE URL
+#       #      text: ALTERNATE TEXT
+#       #    - src: ...
+#       #two_columns_level: 3
+#       #
+#       # render_js: true
+#       #headless_chrome_path: headless-chromium
+#       #
+#       output_path: ./pdf/CognitiveArchitectRepoDir.pdf
+#       enabled_if_env: ENABLE_PDF_EXPORT
+#       #
+#       debug_html: true
+#       #show_anchors: true
+#       verbose: false

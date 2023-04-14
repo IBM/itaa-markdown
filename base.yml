@@ -54,8 +54,8 @@ theme:
   font:
     text: 'IBM Plex Sans'
     code: 'IBM Plex Mono'
-  favicon: 'img/logo-ibm.png'
-  logo: 'img/logo-ibm.png'
+  favicon: 'logo-ibm.png'
+  logo: 'logo-ibm.png'
 
 # hide:
 #   - navigation         # Hide left navigation
