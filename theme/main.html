@@ -44,6 +44,9 @@
 {% endblock %}
 
 {% block scripts %}
+
+  {{ super() }}
+  
   {% if config.oic_handbook and config.oic_handbook.extra_javascript %}
     {% for file in config.oic_handbook.extra_javascript %}
     <script src="{{ file | url }}"></script>
