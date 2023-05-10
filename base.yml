@@ -161,6 +161,7 @@ plugins:
   git-revision-date-localized:
       fallback_to_build_date: true
   git-authors: {}
+  glightbox: {}
   awesome-pages:
       filename: .pages
       collapse_single_pages: false
