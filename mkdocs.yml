@@ -1,4 +1,5 @@
 # EDIT THIS FILE TO CUSTOMIZE THE HANDBOOK
+# See: https://github.ibm.com/oic/handbook-template/wiki/User-Guide for details
 
 # Inherit config from base
 INHERIT: ./base.yml
@@ -13,96 +14,44 @@ site_author: "CognitiveArchitectSiteAuthor"
 repo_name: 'CognitiveArchitectRepoParent/CognitiveArchitectRepoDir'
 repo_url: 'https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir'
 
-# Specify a navigation structure for the first page, uses awesome-pages
-# https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
-nav:
-    - Intro: index.md
-    - ...
-
 # Copyright
 copyright: <a href="/about/">CognitiveArchitectSiteAuthor</a>.
 
-# Extra links as icons at the bottom of the page
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.ibm.com/oic/
-    - icon: fontawesome/solid/globe
-      link: https://www.ibm.com/
+# Customize Handbook Template information visibility
+oic_handbook:
+  #template_display_info: false    # version information in the footer, defaults to true in base.yml
+  announce_text: >
+    The <b>Academy of Technology (AoT)</b> is transforming into <b>IBM Open Innovation Community</b>.
+    See <a href="https://w3.ibm.com/w3publisher/academy-assets/blog/d440d8f0-d2fa-11ed-9765-85f0355fd533"
+    target="_blank">blog post</a> and <a
+    href="https://pages.github.ibm.com/oic/open-innovation-handbook/" target="_blank">Handbook</a> for more details.
+  instana_key: ''
 
-# Configure the Markdown extensions for magic links
+# Provide some control over theme features.  Comment or un-comment as needed.
+theme:
+  language: en
+  features:
+    - announce.dismiss        # Button to dismiss the current temporary announcement
+    - content.action.edit
+    - content.action.feedback
+    # - content.action.view
+    # - content.tabs.link
+    # - navigation.expand     # expand left sidebar by default
+    - navigation.indexes      # attach documents to sections, useful for providing overview pages
+    - navigation.instant      # Single page instant refresh
+    # - navigation.sections   # top level tabs rendered in sidebar
+    - navigation.tabs         # Navigation tabs across top. Comment this out to have navigation on the left
+    - navigation.tabs.sticky  # tab always displayed
+    - navigation.top          # Backup to top button at bottom right
+    - navigation.tracking     # URL updated with active anchor
+    - search.share
+    - search.suggest
+    - toc.integrate           # Integrate page TOC in left sidebar - wider page
+  icon:
+    edit: 'material/pencil-outline'
+
 markdown_extensions:
-  - admonition:
-  - attr_list:
-  - def_list:
-  - tables:
-  - abbr:
-  - footnotes:
-  - md_in_html:
-  - meta
-  - toc:
-      permalink: true
-      toc_depth: 4
-  - smarty:
-      smart_quotes: false
-  - pymdownx.betterem:
-  - pymdownx.critic:
-  - pymdownx.superfences:
-     preserve_tabs: true
-     custom_fences:
-       - name: mermaid
-         class: mermaid
-         format: !!python/name:pymdownx.superfences.fence_code_format
-       - name: flow
-         class: uml-flowchart
-         format: !!python/name:pymdownx.superfences.fence_code_format
-       - name: sequence
-         class: uml-sequence-diagram
-         format: !!python/name:pymdownx.superfences.fence_code_format
-       - name: math
-         class: arithmatex
-         format: !!python/name:pymdownx.arithmatex.fence_mathjax_format
-  - pymdownx.highlight:
-      css_class: codehilite
-      extend_pygments_lang:
-        - name: php-inline
-          lang: php
-          options:
-            startinline: true
-        - name: pycon3
-          lang: pycon
-          options:
-            python3: true
-      linenums_style: pymdownx-inline
-  - pymdownx.inlinehilite:
-        custom_inline:
-        - name: math
-          class: arithmatex
-          format: !!python/name:pymdownx.arithmatex.inline_mathjax_format
-  - pymdownx.tilde:
-  - pymdownx.caret:
-  - pymdownx.smartsymbols:
-  - pymdownx.emoji:
-      emoji_generator: !!python/name:pymdownx.emoji.to_png
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.escapeall:
-      hardbreak: true
-      nbsp: true
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.progressbar:
-  - pymdownx.arithmatex:
-  - pymdownx.mark:
-  - pymdownx.striphtml:
-  - pymdownx.snippets:
-      base_path: docs/src/markdown/_snippets
-  - pymdownx.keys:
-      separator: "\uff0b"
-  - pymdownx.details:
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.magiclink:
+  pymdownx.magiclink:
       provider: 'github'
       repo_url_shortener: true
       repo_url_shorthand: false
@@ -110,32 +59,12 @@ markdown_extensions:
       user: CognitiveArchitectIBMGitHub
       repo: CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
 
-# Configure the PDF export plugin
 plugins:
-  - search
-  - inline-svg
-  - table-reader
-  - git-revision-date-localized:
-      fallback_to_build_date: true
-  - git-authors
-  - awesome-pages:
-      filename: .pages
-      collapse_single_pages: false
-      strict: false
-  - minify:
-      minify_html: true
-  - blog:
-      format: "(%m/%d/%y)"
-      folder: "blog"
-      articles: 10                 # How many do we display
-      display-article-date: true   #
-      display-more-articles: true  # Can we display the previous articles section, or is it better if we hide it?
-  - pdf-export:
-      verbose: false
-      media_type: print
-      enabled_if_env: ENABLE_PDF_EXPORT
-      combined: false
-  - with-pdf: # This creates a single PDF document for the whole site
+  # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
+  tags:
+      tags_file: tags.md
+  # Configure the PDF export plugin - see https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
+  with-pdf: # This creates a single PDF document for the whole site
       author: CognitiveArchitectSiteAuthor
       copyright: Copyright &copy; CognitiveArchitectSiteAuthor
       cover: true
@@ -143,7 +72,7 @@ plugins:
       #
       cover_title: CognitiveArchitectHandbookName
       cover_subtitle: CognitiveArchitectSiteDescription
-      cover_logo: 'img/logo-ibm.png'
+      cover_logo: 'theme/logo-ibm-dark.png'
       #custom_template_path: TEMPLATES PATH
       #
       toc_title: Contents

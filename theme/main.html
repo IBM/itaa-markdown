@@ -1,7 +1,43 @@
 
 {% extends "base.html" %}
 
+{% block extrahead %}
+{% if page.meta and page.meta.git_revision_date_localized %}
+  <meta name="Date" scheme="iso8601" content="{{ page.meta.git_revision_date_localized_raw_iso_date }}">
+{% endif %}
+{% if page.meta and page.meta.tags %}
+    <meta name="keywords" content="{% for tag in page.meta.tags %}{{ tag }}, {% endfor %}" />
+  {% endif %}
+<meta name="Language" scheme="iso6391" content="en" />
+<meta name="robots" content="index, follow" />
+
+  {% if config.oic_handbook and config.oic_handbook.extra_css %}
+    {% for file in config.oic_handbook.extra_css %}
+      <link rel="stylesheet" href="{{ file | url }}">
+    {% endfor %}
+  {% endif %}
+{% endblock %}
+
+{% block analytics %}
+<script>
+    (function(s,t,a,n){s[t]||(s[t]=a,n=s[a]=function(){n.q.push(arguments)},
+    n.q=[],n.v=2,n.l=1*new Date)})(window,"InstanaEumObject","ineum");
+
+    ineum('reportingUrl', 'https://eum-orange-saas.instana.io');
+    ineum('key', '{{config.oic_handbook.instana_key}}');
+    ineum('trackSessions');
+</script>
+<script defer crossorigin="anonymous" src="https://eum.instana.io/eum.min.js"></script>
+{% endblock %}
+
+{% block announce %}
+  {% if config.oic_handbook.announce_text %}
+    <div>{{ config.oic_handbook.announce_text }}</div>
+  {% endif %}
+{% endblock %}
+
 {% block content %}
+
   {{ super() }}
 
   {% if git_page_authors %}
@@ -10,5 +46,13 @@
           Authors: {{ git_page_authors | default('enable mkdocs-git-authors-plugin') }}
       </small>
     </div>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {% if config.oic_handbook and config.oic_handbook.extra_javascript %}
+    {% for file in config.oic_handbook.extra_javascript %}
+    <script src="{{ file | url }}"></script>
+    {% endfor %}
   {% endif %}
 {% endblock %}
