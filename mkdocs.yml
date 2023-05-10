@@ -26,6 +26,8 @@ oic_handbook:
     target="_blank">blog post</a> and <a
     href="https://pages.github.ibm.com/oic/open-innovation-handbook/" target="_blank">Handbook</a> for more details.
   instana_key: 'SwqWI68BRyCMhG-g5zgsAA'
+  extra_javascript:
+    - 'js/extra.js'
 
 # Provide some control over theme features.  Comment or un-comment as needed.
 theme:
