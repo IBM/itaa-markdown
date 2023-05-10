@@ -25,7 +25,7 @@ oic_handbook:
     See <a href="https://w3.ibm.com/w3publisher/academy-assets/blog/d440d8f0-d2fa-11ed-9765-85f0355fd533"
     target="_blank">blog post</a> and <a
     href="https://pages.github.ibm.com/oic/open-innovation-handbook/" target="_blank">Handbook</a> for more details.
-  instana_key: ''
+  instana_key: 'SwqWI68BRyCMhG-g5zgsAA'
 
 # Provide some control over theme features.  Comment or un-comment as needed.
 theme:
