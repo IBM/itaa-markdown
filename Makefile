@@ -64,14 +64,14 @@ serve:
 .PHONY: build
 build:
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocs build > $(HANDBOOK_NAME).html"
-	@/bin/bash -c "sed -i '1{/^Converting/d}' $(HANDBOOK_NAME).html"
-	@/bin/bash -c "sed -i 's#file:///home/travis/build/.*/$(HANDBOOK_NAME)/##g' $(HANDBOOK_NAME).html"
+	@/bin/bash -c "sed -i'' -e '1{/^Converting/d;}' $(HANDBOOK_NAME).html"
+	@/bin/bash -c "sed -i'' -e 's#file://$(shell git rev-parse --show-toplevel)/##g' $(HANDBOOK_NAME).html"
 	@/bin/bash -c "mkdir -p site/out"
 	@/bin/bash -c "pandoc $(HANDBOOK_NAME).html -o $(HANDBOOK_NAME).docx"
 	@/bin/bash -c "mv $(HANDBOOK_NAME).html site/out/"
 	@/bin/bash -c "mv $(HANDBOOK_NAME).docx site/out/"
 
-# help: package                        - package the sources for box deployment (Red Hat sharing)
+# help: package                        - package the sources for box deployment
 .PHONY: package
 package:
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocs build && mkdir -p release && tar cvvf release/$(HANDBOOK_NAME)-Package-$$(date --iso).tar.gz --exclude='release' . "
@@ -82,7 +82,7 @@ package:
 deploy:
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocs gh-deploy"
 
-# help: combine                         - combine
+# help: combine                        - combine
 .PHONY: combine
 combine:
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocscombine -o out/$(HANDBOOK_NAME)-combined.md"

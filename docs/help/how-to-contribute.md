@@ -1,19 +1,9 @@
+---
+classification: confidential
+status: published
+owner: CognitiveArchitectSiteAuthor
+---
 # How to Contribute
-
-??? abstract "Document Control"
-
-    !!! info "Page Owner: Mihai Criveti"
-
-    !!! info "Status"
-        - [X] Structure
-        - [X] Draft
-        - [X] Reviewed
-        - [X] Ready
-        - [ ] Published
-
-    !!! info "Classification"
-        - [X] IBM Internal Use Only
-        - [ ] Public
 
 ## Style Guide
 
@@ -22,7 +12,7 @@
     - Make sure that your file has a heading 1 at the first line of it with a clear title of the page that start with # followed by a space then your page title. Example: `# My OpenShift Page Title`.
     - Capture all screenshots in PNG format: `this-is-a-description-of-the-screenshot.png`.
     - Place all images in the `img` directory and link using relative paths in markdown. Ex: `[My Image Description](./img/my-image-description.png)`.
-    - For new sections, copy and modify the [sample page template](../templates/page-template.md) to the relevant directory
+    - For new sections, copy and modify the [sample page template](./page-template.md) to the relevant directory
 
     See: [IBM Style Guide](https://www.ibm.com/developerworks/library/styleguidelines/index.html)
 
@@ -39,7 +29,7 @@
     - Written in **properly formatted** markdown.
     - **Original**, and does not copy/paste from existing guides / resources.
     - **Builds** on your local machine.
-    - Has an associated **story** (issue or feature request) tracked on [GitHub Projects](https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir/projects).
+    - Has an associated **story** (issue or feature request) tracked on [GitHub Projects](https://github.ibm.com/{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}/projects).
 
 ???+ failure "What NOT to contribute: reinventing the wheel"
     - Unoriginal material: do NOT copy paragraphs from infocenters, product documentation, wikipedia, medium.com, k8s docs
@@ -98,8 +88,8 @@ To interact with IBM GitHub set technical credentials like
 Remember the generated token in your key store and do not share them with other.
 
 ```bash
-git clone https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
-Cloning into 'CognitiveArchitectRepoDir'...
+git clone https://github.ibm.com/{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}
+Cloning into '{{ cookiecutter.repo_dir }}'...
 Username for 'https://github.ibm.com': token
 Password for 'https://token@github.ibm.com':
 ...
@@ -117,8 +107,8 @@ The ssh key option is the more secure and comfortable option. To create the ssh 
 * Select `New SSH key` to enter a new public ssh key
 
 ```bash
-git clone git@github.ibm.com:CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
-Cloning into 'CognitiveArchitectRepoDir'...
+git clone git@github.ibm.com:{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}
+Cloning into '{{ cookiecutter.repo_dir }}'...
 ...
 ```
 
@@ -131,7 +121,7 @@ You can follow the below commands to clone and build the repo locally. After tha
 
 ```
 # clone the repo locally
-git clone https://github.ibm.com/OiC/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
+git clone https://github.ibm.com/OiC/{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}
 
 # Use this command to build the repo locally for the first time
 make venv serve
@@ -147,7 +137,7 @@ Install Python 3 in your computer from https://www.python.org/downloads/
 The following steps are one time steps
 ```
 # clone the repo locally
-git clone https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
+git clone https://github.ibm.com/{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}
 
 # Setup venv for your Python
 python -m venv env
@@ -199,7 +189,7 @@ See:
 ## Reviewing content and submitting an issue
 
 - If you can submit a *Pull Request* with your suggested changes, do so. That is the best way to contribute.
-- Please open a [New Issue](https://github.ibm.com/CognitiveArchitectRepoParent/CognitiveArchitectRepoDir/issues) if you have *general* feedback and comments.
+- Please open a [New Issue](https://github.ibm.com/{{ cookiecutter.repo_parent }}/{{ cookiecutter.repo_dir }}/issues) if you have *general* feedback and comments.
 - Ask yourself: is the content actionable by a solutions architect? If not, trim it down.
 
 !!! warning "Do not open issues if you can and know how to contribute"

@@ -5,7 +5,23 @@
   {% if config.copyright %}
     <div class="md-copyright__highlight">
       {{ config.copyright }}
+
+      {% if config.oic_handbook %}
+        {% if config.oic_handbook.template_repo and
+          config.oic_handbook.template_display_info == true
+        %}
+          Build your own handbook with the <b><a href="{{ config.oic_handbook.template_repo }}"
+              target="_blank">Handbook Template</a></b>.
+        {% endif %}
+      {% endif %}
     </div>
+  {% endif %}
+  {% if config.oic_handbook %}
+    {% if config.oic_handbook.template_version and
+      config.oic_handbook.template_display_info == true
+    %}
+      <div>Template version: {{ config.oic_handbook.template_version }}</div>
+    {% endif %}
   {% endif %}
   {% if not config.extra.generator == false %}
     </a>

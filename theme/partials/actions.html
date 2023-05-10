@@ -1,0 +1,52 @@
+{#-
+    This file was automatically generated - do not edit
+-#}
+{% if page.edit_url %}
+    {% if "content.action.edit" in features %}
+      <a href="{{ page.edit_url }}" title="{{ lang.t('action.edit') }}" class="md-content__button md-icon">
+        {% set icon = config.theme.icon.edit or "material/file-edit-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
+    {% endif %}
+    {% if "content.action.view" in features %}
+      {% if "/blob/" in page.edit_url %}
+        {% set part = "blob" %}
+      {% else %}
+        {% set part = "edit" %}
+      {% endif %}
+      <a href="{{ page.edit_url | replace(part, 'raw') }}" title="{{ lang.t('action.view') }}" class="md-content__button md-icon">
+        {% set icon = config.theme.icon.view or "material/file-eye-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+      </a>
+    {% endif %}
+{% endif %}
+{% if "content.action.feedback" in features %}
+    <a href="{{config.repo_url}}/issues/new?labels=feedback&title=[Feedback]+{{page.title}}&body={{config.site_url}}{{page.url}}" title="Send Page Feedback" class="md-content__button md-icon">
+        {% set icon = config.theme.icon.feedback or "material/comment-plus-outline" %}
+        {% include ".icons/" ~ icon ~ ".svg" %}
+    </a>
+{% endif %}
+{% if page.meta and page.meta.classification %}
+  {% if page.meta.classification == "confidential" %}
+    <a href="https://w3.ibm.com/ibm/corporate-documents/leg/leg-116-faq?query=classification" target="_blank" title="IBM Confidential" class="md-content__button md-icon">
+      {% set icon = config.theme.icon.confidential or "material/shield-key-outline" %}
+      {% include ".icons/" ~ icon ~ ".svg" %}
+    </a>
+  {% endif %}
+{% endif %}
+{% if page.meta and page.meta.status %}
+  {% if page.meta.status == "draft" %}
+    {% set icon = config.theme.icon.draft or "material/wrench-clock-outline" %}
+    <span title="Status: Draft" class="md-content__button md-icon">{% include ".icons/" ~ icon ~ ".svg" %}</span>
+  {% elif page.meta.status == "reviewed" %}
+    {% set icon = config.theme.icon.draft or "material/eye-check-outline" %}
+    <span title="Status: Reviewed" class="md-content__button md-icon">{% include ".icons/" ~ icon ~ ".svg" %}</span>
+  {% elif page.meta.status == "published" %}
+    {% set icon = config.theme.icon.published or "material/sticker-check-outline" %}
+    <span title="Status: Published" class="md-content__button md-icon">{% include ".icons/" ~ icon ~ ".svg" %}</span>
+  {% endif %}
+{% endif %}
+{% if page.meta and page.meta.owner %}
+  {% set icon = config.theme.icon.owner or "material/account-circle-outline" %}
+  <span title="Owner: {{ page.meta.owner }}" class="md-content__button md-icon">{% include ".icons/" ~ icon ~ ".svg" %}</span>
+{% endif %}
