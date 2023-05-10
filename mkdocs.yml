@@ -20,11 +20,6 @@ copyright: <a href="/about/">CognitiveArchitectSiteAuthor</a>.
 # Customize Handbook Template information visibility
 oic_handbook:
   #template_display_info: false    # version information in the footer, defaults to true in base.yml
-  announce_text: >
-    The <b>Academy of Technology (AoT)</b> is transforming into <b>IBM Open Innovation Community</b>.
-    See <a href="https://w3.ibm.com/w3publisher/academy-assets/blog/d440d8f0-d2fa-11ed-9765-85f0355fd533"
-    target="_blank">blog post</a> and <a
-    href="https://pages.github.ibm.com/oic/open-innovation-handbook/" target="_blank">Handbook</a> for more details.
   instana_key: 'SwqWI68BRyCMhG-g5zgsAA'
   extra_javascript:
     - 'js/extra.js'
@@ -33,7 +28,7 @@ oic_handbook:
 theme:
   language: en
   features:
-    - announce.dismiss        # Button to dismiss the current temporary announcement
+    #- announce.dismiss        # Button to dismiss the current temporary announcement
     - content.action.edit
     - content.action.feedback
     # - content.action.view
