@@ -17,3 +17,5 @@ deploy:
    local_dir: site
    on:
      branch: main
+git:
+  depth: false
