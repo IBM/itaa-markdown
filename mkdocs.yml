@@ -36,9 +36,9 @@ theme:
     # - navigation.expand     # expand left sidebar by default
     - navigation.indexes      # attach documents to sections, useful for providing overview pages
     - navigation.instant      # Single page instant refresh
-    # - navigation.sections   # top level tabs rendered in sidebar
-    - navigation.tabs         # Navigation tabs across top. Comment this out to have navigation on the left
-    - navigation.tabs.sticky  # tab always displayed
+    - navigation.sections     # top level tabs rendered in sidebar
+    #- navigation.tabs         # Navigation tabs across top. Comment this out to have navigation on the left
+    #- navigation.tabs.sticky  # tab always displayed
     - navigation.top          # Backup to top button at bottom right
     - navigation.tracking     # URL updated with active anchor
     - search.share
