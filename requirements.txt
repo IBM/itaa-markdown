@@ -18,6 +18,7 @@ mkdocs-blog-plugin==0.25
 mkdocs-glightbox==0.2.1
 
 ## Local extras
+mkdocs-glightbox==0.3.4
 mkdocs-mermaid2-plugin==0.6.0
 mkdocs-with-pdf==0.9.3
 mkdocs-plugin-inline-svg==0.1.0

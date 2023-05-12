@@ -30,12 +30,6 @@
 <script defer crossorigin="anonymous" src="https://eum.instana.io/eum.min.js"></script>
 {% endblock %}
 
-{% block announce %}
-  {% if config.oic_handbook.announce_text %}
-    <div>{{ config.oic_handbook.announce_text }}</div>
-  {% endif %}
-{% endblock %}
-
 {% block content %}
 
   {{ super() }}
@@ -50,6 +44,9 @@
 {% endblock %}
 
 {% block scripts %}
+
+  {{ super() }}
+  
   {% if config.oic_handbook and config.oic_handbook.extra_javascript %}
     {% for file in config.oic_handbook.extra_javascript %}
     <script src="{{ file | url }}"></script>
