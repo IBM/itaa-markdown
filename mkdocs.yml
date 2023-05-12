@@ -36,7 +36,7 @@ theme:
     # - navigation.expand     # expand left sidebar by default
     - navigation.indexes      # attach documents to sections, useful for providing overview pages
     - navigation.instant      # Single page instant refresh
-    - navigation.sections     # top level tabs rendered in sidebar
+    # - navigation.sections     # top level tabs rendered in sidebar
     #- navigation.tabs         # Navigation tabs across top. Comment this out to have navigation on the left
     #- navigation.tabs.sticky  # tab always displayed
     - navigation.top          # Backup to top button at bottom right
@@ -56,47 +56,47 @@ markdown_extensions:
       user: CognitiveArchitectIBMGitHub
       repo: CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
 
-plugins:
-  # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
-  tags:
-      tags_file: tags.md
-  # Configure the PDF export plugin - see https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
-  with-pdf: # This creates a single PDF document for the whole site
-      author: CognitiveArchitectSiteAuthor
-      copyright: Copyright &copy; CognitiveArchitectSiteAuthor
-      cover: true
-      back_cover: false
-      #
-      cover_title: CognitiveArchitectHandbookName
-      cover_subtitle: CognitiveArchitectSiteDescription
-      cover_logo: 'theme/logo-ibm-dark.png'
-      #custom_template_path: TEMPLATES PATH
-      #
-      toc_title: Contents
-      # heading_shift: false
-      toc_level: 2
-      #ordered_chapter_level: 2
-      #excludes_children:
-      #    - 'release-notes/:upgrading'
-      #    - 'release-notes/:changelog'
-      #
-      exclude_pages:
-          - '99.about/'
-          - 'blog'
-      #    - 'appendix/contribute/'
-      #convert_iframe:
-      #    - src: IFRAME SRC
-      #      img: POSTER IMAGE URL
-      #      text: ALTERNATE TEXT
-      #    - src: ...
-      #two_columns_level: 3
-      #
-      # render_js: true
-      #headless_chrome_path: headless-chromium
-      #
-      output_path: ./pdf/CognitiveArchitectRepoDir.pdf
-      enabled_if_env: ENABLE_PDF_EXPORT
-      #
-      debug_html: true
-      #show_anchors: true
-      verbose: false
+# plugins:
+#   # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
+#   tags:
+#       tags_file: tags.md
+#   # Configure the PDF export plugin - see https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
+#   with-pdf: # This creates a single PDF document for the whole site
+#       author: CognitiveArchitectSiteAuthor
+#       copyright: Copyright &copy; CognitiveArchitectSiteAuthor
+#       cover: true
+#       back_cover: false
+#       #
+#       cover_title: CognitiveArchitectHandbookName
+#       cover_subtitle: CognitiveArchitectSiteDescription
+#       cover_logo: 'theme/logo-ibm-dark.png'
+#       #custom_template_path: TEMPLATES PATH
+#       #
+#       toc_title: Contents
+#       # heading_shift: false
+#       toc_level: 2
+#       #ordered_chapter_level: 2
+#       #excludes_children:
+#       #    - 'release-notes/:upgrading'
+#       #    - 'release-notes/:changelog'
+#       #
+#       exclude_pages:
+#           - '99.about/'
+#           - 'blog'
+#       #    - 'appendix/contribute/'
+#       #convert_iframe:
+#       #    - src: IFRAME SRC
+#       #      img: POSTER IMAGE URL
+#       #      text: ALTERNATE TEXT
+#       #    - src: ...
+#       #two_columns_level: 3
+#       #
+#       # render_js: true
+#       #headless_chrome_path: headless-chromium
+#       #
+#       output_path: ./pdf/CognitiveArchitectRepoDir.pdf
+#       enabled_if_env: ENABLE_PDF_EXPORT
+#       #
+#       debug_html: true
+#       #show_anchors: true
+#       verbose: false
