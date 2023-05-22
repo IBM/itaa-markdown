@@ -158,8 +158,8 @@ plugins:
   search: {}
   #inline-svg: {}
   table-reader: {}
-  git-revision-date-localized:
-      fallback_to_build_date: true
+  #git-revision-date-localized:
+  #    fallback_to_build_date: true
   git-authors: {}
   glightbox: {}
   awesome-pages:
