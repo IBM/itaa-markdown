@@ -55,6 +55,9 @@ markdown_extensions:
       social_url_shorthand: true
       user: CognitiveArchitectIBMGitHub
       repo: CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
+  toc:
+      permalink: true
+      toc_depth: 3
 
 plugins:
   # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/

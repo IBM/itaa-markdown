@@ -10,6 +10,17 @@ remote_name: 'origin'
 # Server info
 dev_addr: '127.0.0.1:8000'
 
+# Legal links (do not edit or remove)
+legal:
+  privacy_label: 'Privacy Policy'
+  privacy_link: 'https://w3.ibm.com/w3publisher/w3-privacy-notice/'
+  terms_label: 'Terms of Use'
+  terms_link: 'https://w3.ibm.com/w3publisher/w3-terms-of-use'
+  a11y_label: 'Accessibility'
+  a11y_link: 'https://w3.ibm.com/able/index.html'
+  bcg_label: 'Business Conduct Guidelines'
+  bcg_link: 'https://w3.ibm.com/w3publisher/trust-compliance/bcgs'
+
 # Handbook Template Information
 oic_handbook:
   template_repo: 'https://github.ibm.com/oic/handbook-template/'
@@ -48,9 +59,7 @@ theme:
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
-  font:
-    text: 'IBM Plex Sans'
-    code: 'IBM Plex Mono'
+  font: false
   favicon: 'favicon.ico'
   logo: 'logo-ibm.png'
 
@@ -87,9 +96,6 @@ markdown_extensions:
   footnotes: {}
   md_in_html: {}
   meta: {}
-  toc:
-      permalink: true
-      toc_depth: 3
   smarty:
       smart_quotes: false
   pymdownx.betterem: {}
