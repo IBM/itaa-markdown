@@ -29,7 +29,7 @@ theme:
   language: en
   features:
     #- announce.dismiss        # Button to dismiss the current temporary announcement
-    - content.action.edit
+    #- content.action.edit
     - content.action.feedback
     # - content.action.view
     # - content.tabs.link
