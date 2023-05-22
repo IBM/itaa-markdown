@@ -29,8 +29,8 @@ theme:
   language: en
   features:
     #- announce.dismiss        # Button to dismiss the current temporary announcement
-    - content.action.edit
-    - content.action.feedback
+    #- content.action.edit
+    #- content.action.feedback
     # - content.action.view
     # - content.tabs.link
     # - navigation.expand     # expand left sidebar by default
