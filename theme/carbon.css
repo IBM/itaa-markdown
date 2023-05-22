@@ -169,6 +169,13 @@
     background-color: var(--cds-color-primary-button);
     border: 0;
 }
+/* Tables */
+.md-typeset__table {
+    width: 100%;
+}
+.md-typeset__table table:not([class]) {
+    display: table
+}
 /* Task Lists */
 .md-typeset .task-list-indicator::before {
     background-color: var(--md-default-fg-color--lightest);
