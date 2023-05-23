@@ -166,7 +166,7 @@ plugins:
   table-reader: {}
   #git-revision-date-localized:
   #    fallback_to_build_date: true
-  git-authors: {}
+  # git-authors: {}
   glightbox: {}
   awesome-pages:
       filename: .pages
