@@ -30,7 +30,7 @@ theme:
   features:
     #- announce.dismiss        # Button to dismiss the current temporary announcement
     #- content.action.edit
-    #- content.action.feedback
+    - content.action.feedback
     # - content.action.view
     # - content.tabs.link
     # - navigation.expand     # expand left sidebar by default
@@ -55,6 +55,9 @@ markdown_extensions:
       social_url_shorthand: true
       user: CognitiveArchitectIBMGitHub
       repo: CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
+  toc:
+      permalink: true
+      toc_depth: 3
 
 # plugins:
 #   # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/

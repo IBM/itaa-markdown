@@ -7,6 +7,9 @@ HANDBOOK_NAME := CognitiveArchitectRepoDir
 VENVS_DIR := $(HOME)/.venv
 VENV_DIR := $(VENVS_DIR)/$(HANDBOOK_NAME)
 
+# Setup to support M1 Macs - Linux will be empty; x86 Macs essentially NO-OP
+BREW_SHELLENV := $(shell brew shellenv 2>/dev/null)
+
 .PHONY: help
 help:
 	@grep "^# help\:" Makefile | grep -v grep | sed 's/\# help\: //' | sed 's/\# help\://'
@@ -17,7 +20,7 @@ help:
 venv:
 	@test -d "$(VENVS_DIR)" || mkdir -p "$(VENVS_DIR)"
 	@rm -Rf "$(VENV_DIR)"
-	@python3 -m venv "$(VENV_DIR)"
+	@eval '$(BREW_SHELLENV)' && python3 -m venv "$(VENV_DIR)"
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && pip install --upgrade pip setuptools wheel && pip install markdown-blockdiag && pip install -r requirements.txt"
 	@echo -e "Enter virtual environment using:\n. $(VENV_DIR)/bin/activate\n"
 

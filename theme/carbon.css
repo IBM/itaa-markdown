@@ -1,5 +1,19 @@
 /* Author: Xavier Santolaria <xavier.santolaria1@ibm.com> */
 
+@font-face {
+    font-family: "IBM Plex Sans";
+    src: url("https://1.www.s81c.com/common/carbon/plex/sans.css");
+}
+@font-face {
+    font-family: "IBM Plex Mono";
+    src: url("https://1.www.s81c.com/common/carbon/plex/mono.css");
+}
+
+:root {
+    --md-text-font: "IBM Plex Sans";
+    --md-code-font: "IBM Plex Mono";
+}
+
 /* `White' from v11 https://www.carbondesignsystem.com/guidelines/color/usage */
 [data-md-color-scheme="carbon-design-light"] {
     /* Carbon Design System colors */
@@ -50,6 +64,7 @@
     --md-footer-fg-color:           var(--cds-color-white);
     --md-footer-fg-color--light:    var(--cds-color-white);
     --md-footer-bg-color:           var(--cds-color-gray100);
+    --md-footer-bg-color--dark:     var(--cds-color-gray100);
 }
 /* `Gray 100' from v11 https://www.carbondesignsystem.com/guidelines/color/usage */
 [data-md-color-scheme="carbon-design-dark"] {
@@ -115,6 +130,7 @@
     --md-footer-fg-color:           var(--md-default-fg-color);
     --md-footer-fg-color--dark:     var(--md-default-fg-color--dark);
     --md-footer-bg-color:           var(--md-default-bg-color);
+    --md-footer-bg-color--dark:     var(--md-default-bg-color);
 }
 
 /* 
@@ -152,6 +168,13 @@
     color: var(--cds-color-white);
     background-color: var(--cds-color-primary-button);
     border: 0;
+}
+/* Tables */
+.md-typeset__table {
+    width: 100%;
+}
+.md-typeset__table table:not([class]) {
+    display: table
 }
 /* Task Lists */
 .md-typeset .task-list-indicator::before {
@@ -255,4 +278,16 @@
         So the light theme will pick up the default admonition bg color.
     */
     background-color: var(--cds-color-gray80);
+}
+
+@media only screen and (max-width: 42rem) {
+    footer .md-tabs__list {
+        white-space: normal;
+        padding-bottom: 0.8rem;
+    }
+
+    footer .md-tabs__item {
+        height: auto;
+        width: 100%;
+    }
 }
