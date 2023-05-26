@@ -57,11 +57,11 @@
 <script src="//1.www.s81c.com/common/stats/ibm-common.js" type="text/javascript" async="async"></script>
 {% endblock %}
 
-{% block announce %}
-  {% if config.oic_handbook.announce_text %}
+{% block announce -%}
+  {% if config.oic_handbook.announce_text -%}
     <div>{{ config.oic_handbook.announce_text }}</div>
-  {% endif %}
-{% endblock %}
+  {%- endif %}
+{%- endblock %}
 
 {% block content %}
 
