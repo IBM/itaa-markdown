@@ -1,27 +1,21 @@
 
-
-## Diagram
-
-![<%- data.name %>](../img/<%- data._id %>.png)
+# LDM: <%- data.name %>
 
 
-### Name
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
-
-
-### Description
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,107 +26,26 @@
 <% } %>
 
 
-## Element
-
-[Expand all](#){ .md-button .diff-line }
-
-
-### Entities
-
-<% if (data.entities) { %>
-    <% data.entities.forEach(function(ele){ %>
-
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Attributes</strong> </td>
-        <% if (ele.attributes) { %>
-        <td>
-                <% ele.attributes.forEach(gg=> { %>
-                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-            </td>
-        <% } %>
-    </tr>
-</table>
+<% if (data.entities.length > 0 || data.relationships.length > 0 ) { %>
+## Element(s)
 
 
-</details>
-
-
-    <% }); %>
+<% if (data.entities.length > 0) { %>
+### Entity(ies)
+| Name | Description | Attribute Name | Attribute Type  |
+| --- | --- | --- | --- |
+<% data.entities.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |  <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.name %></div><% })  %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.type %></div><% }) %><% } %> |
+<% }); %>
 <% } %>
 
 
+
+<% if (data.relationships.length > 0) { %>
 ### Relationships
+| Name | Description | Attribute Name | Attribute Type  | Connections & Multiplicity |
+| --- | --- | --- | --- | --- |
+<% data.relationships.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.name %></div><% }) %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.type %>></div><% }) %><% } %> | <% if (ele.relationshipConnections) { %><% ele.relationshipConnections.forEach(gg=> { %><div><%- gg.name %>,[<%- gg.type %>]</div><div><%- gg.connectedEntity.name %></div><% }) %> |
+<% } %><% }); %>
+<% } %>
 
-<% if (data.relationships) { %>
-    <% data.relationships.forEach(function(ele){ %>
-
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Attributes</strong> </td>
-        <% if (ele.attributes) { %>
-        <td>
-                <% ele.attributes.forEach(gg=> { %>
-                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-            </td>
-        <% } %>
-    </tr>
-    <tr>
-        <td> <strong>Relationship Connections</strong> </td>
-        <% if (ele.relationshipConnections) { %>
-        <td>
-                <% ele.relationshipConnections.forEach(gg=> { %>
-                <div><strong><%- gg.name %>,</strong>[<%- gg.type %>]</div>
-                <div><%- gg.connectedEntity.name %></div>
-                <% }) %>
-            </td>
-        <% } %>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
 <% } %>

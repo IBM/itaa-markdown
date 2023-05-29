@@ -1,27 +1,21 @@
 
-
-## Diagram
-
-![<%- data.name %>](../img/<%- data._id %>.png)
+# CM-Static: <%- data.name %>
 
 
-### Name
-
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
-### Description
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,112 +26,37 @@
 <% } %>
 
 
-## Element
+<% if (data.actors.length > 0 || data.subSystems.length > 0 || data.logicalComponents.length > 0 || data.logicalConnectors.length > 0 ) { %>
+## Element(s)
 
 [Expand all](#){ .md-button .diff-line }
 
+[Collapse all](#){ .md-button .collapse-line }
 
-### Actor
+<% if (data.actors.length > 0) { %>
+### Actor(s)
 
-<% if (data.actors) { %>
-    <% data.actors.forEach(function(ele){ %>
-
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Type</strong> </td>
-        <td><%- ele.type %></td>
-    </tr>
-    <tr>
-        <td> <strong>Generic Group</strong> </td>
-<td>
-        <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
-                <% data.genericGroup[ele._id].forEach(gg=> { %>
-                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-                <% } %>
-</td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
+| Name | Description | Type | GenericGroup |
+| --- | --- | --- | --- |
+<% data.actors.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description %> | <%- ele.type %> | <% if (data.genericGroup && data.genericGroup[ele._id]) { %><% data.genericGroup[ele._id].forEach(gg=> { %><div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div><div><%- gg.description %></div><% }) %><% } %> |
+<% }); %>
 <% } %>
 
 
-### Subsystem
+<% if (data.subSystems.length > 0) { %>
+### Subsystem(s)
 
-<% if (data.subSystems) { %>
-    <% data.subSystems.forEach(function(ele){ %>
+| Name | Description |
+| --- | --- |
+<% data.subSystems.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description %> |
+<% }) %>
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <% if (ele.subDiagramID) { %>
-    <tr>
-        <td> <strong>Sub-Diagram</strong> </td>
-        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
-        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
-                <%- ele.subDiagramId %>
-        </a></td>
-        <% } else { %>
-        <td>
-            <%- ele.subDiagramId %>
-        </td>
-        <% } %>
-        
-    </tr>
-    <% } %>
-</table>
-
-
-</details>
-
-
-    <% }); %>
 <% } %>
 
 
-### Logical Component
+<% if (data.logicalComponents.length > 0) { %>
+### Logical Component(s)
 
-<% if (data.logicalComponents) { %>
     <% data.logicalComponents.forEach(function(ele){ %>
 
 <details markdown=1>
@@ -155,15 +74,68 @@
         <td> <strong>Name</strong> </td>
         <td><%- ele.name %></td>
     </tr>
+    <% if (ele.description) { %>
     <tr>
         <td> <strong>Description</strong> </td>
         <td><%- ele.description %></td>
     </tr>
+    <% } %>
+    <% if (ele.taxonomies && ele.taxonomies.length > 0) { %>
+    <tr>
+        <td> <strong>Primary Capability</strong> </td>
+        <td><% ele.taxonomies.forEach(function(tax){ %><div><%- tax %></div><% }); %></td>
+    </tr>
+    <% } %>
+    <% if (data.logicalComponentList && data.logicalComponentList[ele._id]) { %>  
+    <tr>
+        <td> <strong>Deployment Unit</strong> </td>
+        <td>
+                <% data.logicalComponentList[ele._id].forEach(gg=> { %>
+                <div><%- gg %></div>
+                <% }) %>
+        </td>
+    </tr>
+    <% } %>
+    <% if (ele.functionalRequirements && ele.functionalRequirements.length > 0) { %>
+    <tr>
+        <td> <strong>Functional Requirement</strong> </td>
+        <td><% ele.functionalRequirements.forEach(function(fr){ %><div><%- fr.id %> - <%- fr.name %></div><% }); %></td>
+    </tr>
+    <% } %>
+    <% if (ele.architecturalDecisions && ele.architecturalDecisions.length > 0) { %>
+    <tr>
+        <td> <strong>Architecture Decision</strong> </td>
+        <td><% ele.architecturalDecisions.forEach(function(ad){ %><div><%- ad.id%> - <%- ad.name %></div><% }); %></td>
+    </tr>
+    <% } %>
+    <% if (ele.nonFunctionalRequirements && ele.nonFunctionalRequirements.length > 0) { %>
+    <tr>
+        <td> <strong>Non Functional Requirement</strong> </td>
+        <td><% ele.nonFunctionalRequirements.forEach(function(nfr){ %><div><%- nfr.id%> - <%- nfr.name %></div><% }); %></td>
+    </tr>
+    <% } %>
+    <% if (ele.physicalComponents && ele.physicalComponents.length > 0) { %>
+    <tr>
+        <td> <strong>Implementation</strong> </td>
+        <td><% ele.physicalComponents.forEach(function(iml){ %><div><%- iml.name %></div><% }); %></td>
+    </tr>
+    <% } %>
+    <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
+    <tr>
+        <td> <strong>Generic Group</strong> </td>
+        <td>
+                <% data.genericGroup[ele._id].forEach(gg=> { %>
+                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
+                <div><%- gg.description %></div>
+                <% }) %>
+        </td>
+    </tr>
+    <% } %>
     <% if (ele.subDiagramID) { %>
     <tr>
         <td> <strong>Sub-Diagram</strong> </td>
         <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
-        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>">
                 <%- ele.subDiagramId %>
         </a></td>
         <% } else { %>
@@ -171,7 +143,6 @@
             <%- ele.subDiagramId %>
         </td>
         <% } %>
-        
     </tr>
     <% } %>
 </table>
@@ -184,35 +155,14 @@
 <% } %>
 
 
-### Logical Connector
+<% if (data.logicalConnectors.length > 0) { %>
+### Logical Connector(s)
 
-<% if (data.logicalConnectors) { %>
-    <% data.logicalConnectors.forEach(function(ele){ %>
+| Name | Description |
+| --- | --- | 
+<% data.logicalConnectors.forEach(function(ele){ %> <%if(ele.name != null && ele.name != "" && ele.description != null && ele.description != "") { %> | <%- ele.name %> | <%- ele.description %> | <%} %>
+<% }); %>
+    
+<% } %>
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
 <% } %>

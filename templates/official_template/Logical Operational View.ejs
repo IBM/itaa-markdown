@@ -1,27 +1,19 @@
+# OM-LOM: <%- data.name %>
 
 
-## Diagram
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
-![<%- data.name %>](../img/<%- data._id %>.png)
-
-
-### Name
-
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
-
-
-### Description
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,180 +24,52 @@
 <% } %>
 
 
-## Element
+<% if (data.actors.length > 0 || data.omLocations.length > 0 || data.logicalConnections.length > 0 || data.logicalNodes.length > 0) { %>
+## Element(s)
 
 [Expand all](#){ .md-button .diff-line }
 
-
-### Actor
-
-<% if (data.actors) { %>
-    <% data.actors.forEach(function(ele){ %>
-
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Type</strong> </td>
-        <td><%- ele.type %></td>
-    </tr>
-    <tr>
-        <td> <strong>Generic Group</strong> </td>
-<td>
-        <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
-                <% data.genericGroup[ele._id].forEach(gg=> { %>
-                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-                <% } %>
-</td>
-    </tr>
-</table>
+[Collapse all](#){ .md-button .collapse-line }
 
 
-</details>
+<% if (data.actors.length > 0) { %>
+### Actor(s)
 
-
-    <% }); %>
+| Name | Description | Type | GenericGroup |
+| --- | --- | --- | --- |
+<% data.actors.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description %> | <%- ele.type %> | <% if (data.genericGroup && data.genericGroup[ele._id]) { %><% data.genericGroup[ele._id].forEach(gg=> { %><div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div><div><%- gg.description %></div><% }) %><% } %> |
+<% }); %>
 <% } %>
 
 
-### Subsystem
 
-<% if (data.subSystems) { %>
-    <% data.subSystems.forEach(function(ele){ %>
+<% if (data.omLocations.length > 0) { %>
+### OMLocation(s)
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <% if (ele.subDiagramID) { %>
-    <tr>
-        <td> <strong>Sub-Diagram</strong> </td>
-        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
-        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
-                <%- ele.subDiagramId %>
-        </a></td>
-        <% } else { %>
-        <td>
-            <%- ele.subDiagramId %>
-        </td>
-        <% } %>
-        
-    </tr>
-    <% } %>
-</table>
-
-
-</details>
-
-
-    <% }); %>
+| Name | Description |
+| --- | --- | 
+<% data.omLocations.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |
+<% }); %>
+    
 <% } %>
 
 
-### OMLocation
 
-<% if (data.omLocations) { %>
-    <% data.omLocations.forEach(function(ele){ %>
+<% if (data.logicalConnections.length > 0) { %>
+### Logical Connection(s)
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
+| Name | Description |
+| --- | --- | 
+<% data.logicalConnections.forEach(function(ele){ %> <%if(ele.name != null && ele.name != "" && ele.description != null && ele.description != "") { %> | <%- ele.name %> | <%- ele.description %> | <%} %>
+<% }); %>
+    
 <% } %>
 
 
-### Logical Connection
 
-<% if (data.logicalConnections) { %>
-    <% data.logicalConnections.forEach(function(ele){ %>
+<% if (data.logicalNodes.length > 0) { %>
+### Logical Node(s)
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
-<% } %>
-
-
-### Logical Node
-
-<% if (data.logicalNodes) { %>
     <% data.logicalNodes.forEach(function(ele){ %>
 
 <details markdown=1>
@@ -250,16 +114,16 @@
     <tr>
         <td> <strong>Architectural Decision</strong> </td>
         <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].architecturalDecisions.forEach(gg=> { %>
-                <div><a href="../../Architectural Decisions/<%- gg._id %>"><%- gg.name %></a></div>
+            <% data.logicalNodesList[ele.name].architecturalDecisions.forEach(gg=> { %>                
+                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div>
             <% }) %>
         <% } %></td>
     </tr>
     <tr>
         <td> <strong>Non Functional Requirement</strong> </td>
         <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].nonFunctionalRequirements.forEach(gg=> { %>
-                <div><a href="../../Non Functional Requirements/<%- gg._id %>"><%- gg.name %></a></div>
+            <% data.logicalNodesList[ele.name].nonFunctionalRequirements.forEach(gg=> { %>                
+                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div>
             <% }) %>
         <% } %></td>
     </tr>
@@ -276,7 +140,7 @@
         <td> <strong>Sub-level Diagram</strong> </td>
         <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]  && data.logicalNodesList[ele.name].subLevelDiagram) { %>
             <% data.logicalNodesList[ele.name].subLevelDiagram.forEach(gg=> { %>
-                <div><a href="../../Sub-level Diagram/<%- gg._id %>"><%- gg.name %></a></div>
+                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div>
             <% }) %>
         <% } %></td>
     </tr>
@@ -284,7 +148,7 @@
         <td> <strong>Related Diagrams</strong> </td>
         <td><% if (data.diagramRelation && data.diagramRelation[ele._id] && data.diagramRelation[ele._id].diagram) { %>
             <% data.diagramRelation[ele._id].diagram.forEach(gg=> { %>
-                <div><a href="../../<%- gg.artifactTypeName %>/<%- gg.properties._id %>"><%- gg.properties.name %></a></div>
+                <div><a href="<%- 'URL_' + gg.properties._id %>"><%- gg.properties.name %></a></div>
             <% }) %>
         <% } %></td>
     </tr>
@@ -295,7 +159,7 @@
                 <div><%- gg.properties.name %></div>
                 <% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { %>
                     <% data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
-                    <li><a href="../../<%- dia.artifactTypeName %>/<%- dia.properties._id %>"><%- dia.properties.name %></a></li>
+                    <li><a href="../../<%- dia.artifactTypeName.replace(/\s+/g, '-') %>/<%- dia.properties.name %>"><%- dia.properties.name %></a></li>
                     <% }) %>
                 <% } %>
             <% }) %>
@@ -303,7 +167,7 @@
                 <div><%- gg.properties.name %></div>
                 <% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { %>
                     <% data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
-                    <li><div><a href="../../<%- dia.artifactTypeName %>/<%- dia.properties._id %>"><%- dia.properties.name %></a></div></li>
+                    <li><div><a href="../../<%- dia.artifactTypeName.replace(/\s+/g, '-') %>/<%- dia.properties.name %>"><%- dia.properties.name %></a></div></li>
                     <% }) %>
                 <% } %>
             <% }) %>
@@ -313,7 +177,7 @@
     <tr>
         <td> <strong>Sub-Diagram</strong> </td>
         <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>
-        <td><a href="../../<%- data.subInfo[ele.subDiagramID].artifactTypeName %>/<%- data.subInfo[ele.subDiagramID]._id %>">
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>">
                 <%- ele.subDiagramId %>
         </a></td>
         <% } else { %>
@@ -331,4 +195,6 @@
 
 
     <% }); %>
+<% } %>
+
 <% } %>

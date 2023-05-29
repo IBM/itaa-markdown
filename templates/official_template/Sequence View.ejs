@@ -1,26 +1,18 @@
+# CM-Seq: <%- data.name %>
 
 
-## Diagram
-
-![<%- data.name %>](../img/<%- data._id %>.png)
-
-
-### Name
-
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
-
-### Description
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -31,78 +23,29 @@
 <% } %>
 
 
+<% if (data.timelines.length > 0 || data.componentMessages.length > 0 ) { %>
 ## Element
 
-[Expand all](#){ .md-button .diff-line }
 
+<% if (data.timelines.length > 0) { %>
+### Timeline(s)
 
-### Timeline
-
-<% if (data.timelines) { %>
-    <% data.timelines.forEach(function(ele){ %>
-
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
+| Name | Description |
+| --- | --- | 
+<% data.timelines.forEach(function(ele){ %> <%if(ele.name != null && ele.name != "" && ele.description != null && ele.description != "") { %> | <%- ele.name %> | <%- ele.description %> | <%} %>
+<% }); %>
+    
 <% } %>
 
 
-### Component Message
+<% if (data.componentMessages.length > 0) { %>
+### Component Message(s)
 
-<% if (data.componentMessages) { %>
-    <% data.componentMessages.forEach(function(ele){ %>
+| Name | Description | Type |
+| --- | --- | --- |
+<% data.componentMessages.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <%- ele.type %> |
+<% }); %>
+    
+<% } %>
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Type</strong> </td>
-        <td><%- ele.type %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
 <% } %>

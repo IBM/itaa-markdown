@@ -1,73 +1,87 @@
 
-
+<% if (data.name) { %>
 # <%- data.name %>
+<% } %>
 
-### Assumption Description
 
 <% if (data.description) { %>
+### Assumption Description
+
 <%- data.description %>
 <% } %>
 
 
-### BU / Department / Competency
 
 <% if (data.bu) { %>
+### BU / Department / Competency
+
 <%- data.bu %>
 <% } %>
 
 
-### Assumption identified by
 
 <% if (data.identifiedBy) { %>
+### Assumption identified by
+
 <%- data.identifiedBy %>
 <% } %>
 
 
-### Confidence Level
 
 <% if (data.confidenceLevel) { %>
+### Confidence Level
+
 <%- data.confidenceLevel %>
 <% } %>
 
 
-### Impact
 
 <% if (data.impact) { %>
+### Impact
+
 <%- data.impact %>
 <% } %>
 
 
+<% if (data.raisedDate) { %>
 ### Date Raised
 
 <%- data.raisedDate %>
+<% } %>
 
-
-### Review Date
 
 <% if (data.reviewDate) { %>
+### Review Date
+
 <%- data.reviewDate %>
 <% } %>
 
 
-### Date Closed
 
 <% if (data.closedDate) { %>
+### Date Closed
+
 <%- data.closedDate %>
 <% } %>
 
 
-### Comments
 
 <% if (data.comments) { %>
+### Comments
+
 <%- data.comments %>
 <% } %>
 
 
+<% if (data.isKey) { %>
 ### Is this a Key Assumption?
 
 <%- data.isKey %>
+<% } %>
 
 
+<% if (data.isExternal) { %>
 ### External
 
 <%- data.isExternal %>
+<% } %>

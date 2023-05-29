@@ -1,27 +1,24 @@
+# MISC: <%- data.name %>
 
 
 ## Diagram
 
-![<%- data.name %>](../img/<%- data._id %>.png)
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
-### Name
 
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
-
-
-### Description
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,9 +29,10 @@
 <% } %>
 
 
-### Label
 
-<% if (data.labels) { %>
+<% if (data.labels.length > 0) { %>
+### Label(s)
+
 <% data.labels.forEach(label => { %>
 `<%- label %>`<% }) %>
 <% } %>

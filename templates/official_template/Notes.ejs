@@ -3,7 +3,7 @@
 # <%- data.name %>
 
 
-<% if (data.labels) { %>
+<% if (data.labels.length > 0) { %>
 <% data.labels.forEach(label => { %>
 `<%- label %>`<% }) %>
 <% } %>

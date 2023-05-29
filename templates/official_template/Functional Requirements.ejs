@@ -1,84 +1,48 @@
 
-
-# <%- data.name %>
-
-
-### ID
-
-<%- data.id %>
+# <%- data.id %> - <%- data.name %>
 
 
-### Name
-
-<%- data.name %>
-
-
+<% if (data.description) { %>
 ### Description
 
 <%- data.description %>
+<% } %>
 
 
+<% if (data.impact) { %>
 ### Impact
 
 <%- data.impact %>
+<% } %>
 
 
+<% if (data.weight) { %>
 ### Weight
 
 <%- data.weight %>
+<% } %>
 
 
+<% if (data.owner) { %>
 ### Owner
 
 <%- data.owner %>
-
-[Expand all](#){ .md-button .same-line }
-
-
-#### Logical Components
-
-<% if (data.logicalComponents) { %>
-    <% data.logicalComponents.forEach(function(lc){ %>
-        <%# include('user/show', {user: user}) %>
-
-<details open markdown=1>
-<summary markdown="span"><%- lc.name %></summary>
-
-<%# 
-|<!-- --> |<!-- --> |
-| -------- | :----- |
-| **Name** | lc.name |
-| **Description** | lc.description |
-%> 
+<% } %>
 
 
+<% if (data.logicalComponents.length > 0) { %>
 
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- lc.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- lc.description %></td>
-    </tr>
-</table>
+### Logical Component(s)
 
-
-</details>
-
-
+| Name | Description |
+| --- | --- |
+<% data.logicalComponents.forEach(function(lc){ %> | <%- lc.name %> | <%- lc.description %> |
     <% }); %>
 <% } %>
 
 
+<% if (data.reviewDate) { %>
 ### Review Date
 
 <%- data.reviewDate %>
+<% } %>

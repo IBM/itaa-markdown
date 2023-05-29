@@ -1,27 +1,21 @@
+# AOD-Usage: <%- data.name %>
 
 
-## Diagram
-
-![<%- data.name %>](../img/<%- data._id %>.png)
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
-### Name
 
-<% if (data.name) { %>
-<%- data.name %>
-<% } %>
-
-
-### Description
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,38 +26,15 @@
 <% } %>
 
 
-[Expand all](#){ .md-button .same-line }
+
+<% if (data.usageSteps.length > 0) { %>
 
 
 ## Step List
 
-<% if (data.usageSteps) { %>
-    <% data.usageSteps.forEach(function(us){ %>
-
-<details open markdown=1>
-<summary markdown="span"><%- us.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- us.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- us.description %></td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
+| Name | Description |
+| --- | --- | 
+<% data.usageSteps.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |
+<% }); %>
+    
 <% } %>

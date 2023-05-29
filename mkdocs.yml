@@ -22,7 +22,9 @@ oic_handbook:
   #template_display_info: false    # version information in the footer, defaults to true in base.yml
   instana_key: 'SwqWI68BRyCMhG-g5zgsAA'
   extra_javascript:
-    - 'js/extra.js'
+    - 'customized_theme/extra.js'
+  extra_css:
+    - 'customized_theme/extra.css'
 
 # Provide some control over theme features.  Comment or un-comment as needed.
 theme:

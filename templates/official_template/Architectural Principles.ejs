@@ -1,52 +1,56 @@
 
-
+<% if (data.subjectArea) { %>
 # <%- data.name %>
+<% } %>
 
-
-### Subject Area
 
 <% if (data.subjectArea) { %>
+### Subject Area
+
 <%- data.subjectArea %>
 <% } %>
 
 
-### Topic
 
 <% if (data.topic) { %>
+### Topic
+
 <%- data.topic %>
 <% } %>
 
-
+<% if (data.priority) { %>
 ### Ranked Priority
 
-<% if (data.priority) { %>
 <%- data.priority %>
 <% } %>
 
 
+<% if (data.description) { %>
 ### Description
 
-<% if (data.description) { %>
 <%- data.description %>
 <% } %>
 
 
-### Rationale
 
 <% if (data.rationale) { %>
+### Rationale
+
 <%- data.rationale %>
 <% } %>
 
 
-### Implications
 
 <% if (data.implications) { %>
+### Implications
+
 <%- data.implications %>
 <% } %>
 
 
-### Metrics
 
 <% if (data.metrics) { %>
+### Metrics
+
 <%- data.metrics %>
 <% } %>

@@ -1,91 +1,95 @@
 
 
-# <%- data.name %>
+# <%- data.id %> - <%- data.name %>
 
 
-### ID
-
-<%- data.id %>
-
-
-### Name
-
-<%- data.name %>
-
-
+<% if (data.description) { %>
 ### Description
 
 <%- data.description %>
+<% } %>
 
-
-### Theme
 
 <% if (data.theme) { %>
+### Theme
+
 <%- data.theme %>
 <% } %>
 
 
-### Context
 
 <% if (data.context) { %>
+### Context
+
 <%- data.context %>
 <% } %>
 
 
-### Value
 
 <% if (data.value) { %>
+### Value
+
 <%- data.value %>
 <% } %>
 
 
-### Growth Rate
 
 <% if (data.growthRate) { %>
+### Growth Rate
+
 <%- data.growthRate %>
 <% } %>
 
 
-### Acceptance Criteria
 
 <% if (data.acceptanceCriteria) { %>
+### Acceptance Criteria
+
 <%- data.acceptanceCriteria %>
 <% } %>
 
 
-### Priority
 
 <% if (data.priority) { %>
+### Priority
+
 <%- data.priority %>
 <% } %>
 
 
-### Source
 
 <% if (data.source) { %>
+### Source
+
 <%- data.source %>
 <% } %>
 
 
-### Reference
 
 <% if (data.reference) { %>
+### Reference
+
 <%- data.reference %>
 <% } %>
 
 
-### Test Method
 
 <% if (data.testMethod) { %>
+### Test Method
+
 <%- data.testMethod %>
 <% } %>
 
 
+<% if (data.owner) { %>
 ### Owner
 
 <%- data.owner %>
+<% } %>
 
 
+<% if (data.reviewDate) { %>
 ### Review Date
 
 <%- data.reviewDate %>
+<% } %>

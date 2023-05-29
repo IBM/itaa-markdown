@@ -3,79 +3,95 @@
 # <%- data.name %>
 
 
-### Issue Description
 
 <% if (data.description) { %>
+### Issue Description
+
 <%- data.description %>
 <% } %>
 
 
-### BU / Department / Competency
 
 <% if (data.bu) { %>
+### BU / Department / Competency
+
 <%- data.bu %>
 <% } %>
 
 
-### Raised by
 
 <% if (data.raisedBy) { %>
+### Raised by
+
 <%- data.raisedBy %>
 <% } %>
 
 
-### Owner
 
 <% if (data.issueResponsibility) { %>
+### Owner
+
 <%- data.issueResponsibility %>
 <% } %>
 
 
-### Priority
 
 <% if (data.priority) { %>
+### Priority
+
 <%- data.priority %>
 <% } %>
 
 
-### Action
 
 <% if (data.action) { %>
+### Action
+
 <%- data.action %>
 <% } %>
 
 
+
+<% if (data.raisedDate) { %>
 ### Date Raised
 
 <%- data.raisedDate %>
+<% } %>
 
 
-### Review Date
 
 <% if (data.reviewDate) { %>
+### Review Date
+
 <%- data.reviewDate %>
 <% } %>
 
 
-### Date Closed
 
 <% if (data.closedDate) { %>
+### Date Closed
+
 <%- data.closedDate %>
 <% } %>
 
 
-### Comments
 
 <% if (data.comments) { %>
+### Comments
+
 <%- data.comments %>
 <% } %>
 
 
+<% if (data.isKey) { %>
 ### Is this a Key Issue?
 
 <%- data.isKey %>
+<% } %>
 
 
+<% if (data.isExternal) { %>
 ### External
 
 <%- data.isExternal %>
+<% } %>

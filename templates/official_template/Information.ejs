@@ -2,86 +2,93 @@
 
 # Information
 
-!!! note "The latest architectural content can always be found here: https://w3.ibm.com/tools/cogarch/architectures/Collaboration/<%- data.archId %>"
 
-### Name
+| Architecture Name | Type | Shared As-Is? | isDiscoverable |
+| --- | --- | --- | --- |
+| <%- data.name %> | <%- data.type %> | <%- data.isAsIs %> | <%- data.isDiscoverable %>|
 
-<%- data.name %>
 
-
+<% if (data.clientName) { %>
 ### Client Name
 
 <%- data.clientName %>
+<% } %>
 
 
+<% if (data.salesConnectNum) { %>
 ### Opportunity Number
 
 <%- data.salesConnectNum %>
+<% } %>
 
 
+
+<% if (data.industries.length > 0) { %>
 ### Industry
 
-<% if (data.industries) { %>
 <% data.industries.forEach(element => { %>
 <%- element %>  <% }) %>
 <% } %>
 
 
+
+<% if (data.technologies.length > 0) { %>
 ### Technology
 
-<% if (data.technologies) { %>
 <% data.technologies.forEach(element => { %>
 <%- element %>  <% }) %>
 <% } %>
 
 
+
+<% if (data.businessObjectives.length > 0) { %>
 ### Business Objectives
 
-<% if (data.businessObjectives) { %>
 <% data.businessObjectives.forEach(element => { %>
 <%- element %>  <% }) %>
 <% } %>
 
 
+
+<% if (data.technicalChallenges.length > 0) { %>
 ### Technical Challenges
 
-<% if (data.technicalChallenges) { %>
 <% data.technicalChallenges.forEach(element => { %>
 <%- element %>  <% }) %>
 <% } %>
 
 
+
+<% if (data.tags.length > 0) { %>
 ### Tag
 
-<% if (data.tags) { %>
 <% data.tags.forEach(element => { %>
 <%- element %>  <% }) %>
 <% } %>
 
 
-### Share As-is
-
-<%- data.isAsIs %>
-
-
-### Owner
 
 <% if (data.owner) { %>
+### Owner
+
 User ID: &nbsp; &nbsp; &nbsp; <%- data.owner.fullname %>  
 Job Role: &nbsp; &nbsp; <%- data.owner.jobResponsibilities %>  
 Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%- data.owner._id %>  
 <% } %>
 
 
-### Last modified by
 
 <% if (data.lastModifiedUser) { %>
+### Last modified by
+
 User ID: &nbsp; &nbsp; &nbsp; <%- data.lastModifiedUser.fullname %>  
 Job Role: &nbsp; &nbsp; <%- data.lastModifiedUser.jobResponsibilities %>  
 Email: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <%- data.lastModifiedUser._id %>  
 <% } %>
 
 
+<% if (data.lastModified) { %>
 ### Last modified date
 
 <%- data.lastModified %>
+<% } %>

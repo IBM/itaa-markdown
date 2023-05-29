@@ -1,58 +1,69 @@
+# <%- data.id %> - <%- data.name %>
 
 
-# <%- data.id %>
-
-
-### Name
-
-<%- data.name %>
-
-
+<% if (data.status) { %>
 ### Status
 
 <%- data.status %>
+<% } %>
 
 
+<% if (data.lastUpdated) { %>
 ### Last Update
 
 <%- data.lastUpdated %>
+<% } %>
 
 
+<% if (data.subjectArea) { %>
 ### Subject Area
 
 <%- data.subjectArea %>
+<% } %>
 
 
+<% if (data.topic) { %>
 ### Topic
 
 <%- data.topic %>
+<% } %>
 
 
+<% if (data.problemStatement) { %>
 ### Issue or Problem Statement
 
 <%- data.problemStatement %>
+<% } %>
 
 
+<% if (data.assumptions) { %>
 ### Assumptions
 
 <%- data.assumptions %>
+<% } %>
 
 
+<% if (data.motivation) { %>
 ### Motivation
 
 <%- data.motivation %>
+<% } %>
 
 
+<% if (data.notes) { %>
 ### Notes
 
 <%- data.notes %>
+<% } %>
 
-[Expand all](#){ .md-button .same-line }
 
+<% if (data.alternatives.length > 0) { %>
+[Expand all](#){ .md-button .diff-line }
+
+[Collapse all](#){ .md-button .collapse-line }
 
 ### Alternatives
 
-<% if (data.alternatives) { %>
     <% data.alternatives.forEach(function(al){ %>
 
 <details markdown=1>
@@ -92,26 +103,36 @@
 <% } %>
 
 
+<% if (data.decision) { %>
 ### Decision
 
 <%- data.decision %>
+<% } %>
 
 
+<% if (data.justification) { %>
 ### Justification
 
 <%- data.justification %>
+<% } %>
 
 
+<% if (data.implications) { %>
 ### Implications
 
 <%- data.implications %>
+<% } %>
 
 
+<% if (data.derivedRequirements) { %>
 ### Derived Requirements
 
 <%- data.derivedRequirements %>
+<% } %>
 
 
+<% if (data.relatedDecisions) { %>
 ### Related Decisions
 
 <%- data.relatedDecisions %>
+<% } %>

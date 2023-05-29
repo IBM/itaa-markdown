@@ -1,27 +1,24 @@
 
-
-## Diagram
-
-![<%- data.name %>](../img/<%- data._id %>.png)
-
-
+<% if (data.name) { %>
 ### Name
 
-<% if (data.name) { %>
 <%- data.name %>
 <% } %>
 
 
-### Description
+![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
+
 
 <% if (data.description) { %>
+### Description
+
 <%- data.description %>
 <% } %>
 
 
+<% if (data.reference && data.reference.length > 0) { %>
 ### Reference(s)
 
-<% if (data.reference) { %>
     <% data.reference.forEach(reference => { %>
         <% if (reference.name && reference.url) { %>
 [<%- reference.name %>](<%- reference.url %>)
@@ -32,55 +29,25 @@
 <% } %>
 
 
-## Element
+<% if (data.targetSystems.length > 0 || data.actors.length > 0 ) { %>
+## Element(s)
 
-[Expand all](#){ .md-button .diff-line }
+<% if (data.targetSystems.length > 0) { %>
+### Target System(s)
 
+| Name | Description |
+| --- | --- |
+<% data.targetSystems.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |
+<% }); %>
+<% } %>
 
-### Actor
+<% if (data.actors.length > 0) { %>
+### Actor(s)
 
-<% if (data.actors) { %>
-    <% data.actors.forEach(function(ele){ %>
+| Name | Description | Type | GenericGroup |
+| --- | --- | --- | --- |
+<% data.actors.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <%- ele.type %> | <% if (data.genericGroup && data.genericGroup[ele._id]) { %><% data.genericGroup[ele._id].forEach(gg=> { %><div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div><div><%- gg.description %></div><% }) %><% } %> |
+<% }); %>
+<% } %>
 
-<details markdown=1>
-<summary markdown="span"><%- ele.name %></summary>
-
-<table>
-    <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
-    <tr>
-        <td> <strong>Name</strong> </td>
-        <td><%- ele.name %></td>
-    </tr>
-    <tr>
-        <td> <strong>Description</strong> </td>
-        <td><%- ele.description %></td>
-    </tr>
-    <tr>
-        <td> <strong>Type</strong> </td>
-        <td><%- ele.type %></td>
-    </tr>
-    <tr>
-        <td> <strong>Generic Group</strong> </td>
-        <td>
-        <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
-                <% data.genericGroup[ele._id].forEach(gg=> { %>
-                <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-                <% } %>
-        </td>
-    </tr>
-</table>
-
-
-</details>
-
-
-    <% }); %>
 <% } %>
