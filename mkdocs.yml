@@ -61,8 +61,8 @@ markdown_extensions:
 
 plugins:
   # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
-  tags:
-      tags_file: tags.md
+  #tags:
+  #    tags_file: tags.md
   # Configure the PDF export plugin - see https://github.com/zhaoterryy/mkdocs-pdf-export-plugin
   with-pdf: # This creates a single PDF document for the whole site
       author: CognitiveArchitectSiteAuthor
