@@ -46,7 +46,9 @@ theme:
     - search.share
     - search.suggest
     #- toc.integrate           # Integrate page TOC in left sidebar - wider page
-  icon:
+  icon:    
+    admonition: 
+      note: material/information  # https://squidfunk.github.io/mkdocs-material/reference/admonitions/?h=admonitions#admonition-icons
     edit: 'material/pencil-outline'
 
 markdown_extensions:
