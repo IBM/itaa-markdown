@@ -163,7 +163,7 @@ markdown_extensions:
 plugins:
   search: {}
   #inline-svg: {}
-  table-reader: {}
+  #table-reader: {}
   #git-revision-date-localized:
   #    fallback_to_build_date: true
   # git-authors: {}
