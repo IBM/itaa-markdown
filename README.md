@@ -2,13 +2,14 @@
 
 
 ## Introduction
-This is the markdown repository template for the "Export to GitHub Pages" utility in Cognitive Architect (aka IBM IT Architect Assistant - SaaS Version).  
+This is the markdown repository template for the "Export to GitHub Pages" utility in Cognitive Architect (aka IBM IT Architect Assistant - SaaS Version). With Release 3.16.5, the template is now based on the [OIC Open Innovation Handbook](https://github.ibm.com/oic/open-innovation-handbook).
 
 The export utility creates markdown files containing the architecture information and then generates the corresponding GitHub Pages of the architecture using [MkDocs](https://www.mkdocs.org), [ejs](https://ejs.co/), [MkDocs Awesome Pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).  
 
 It consists of the following folders:
 - docs
-- template
+- includes
+- templates
   - official_template : contains the architectural artifacts' default [ejs](https://ejs.co/) templates
   - user_template : user-defined templates that overrides the default ones
 - theme : contains the [theme](https://squidfunk.github.io/mkdocs-material/customization/#extending-the-theme) used for the generated pages
@@ -251,32 +252,9 @@ To change the look & feel of your pages:
 
 <hr>
 
-## *Refreshing Your Pages using Command Line Execution - Work In Progress*
-*---We are in the process of refining this process. Ignore content in this section for now---.*
-
-
-If you customize the theme and/or *.MD files, instead of using the Export utility in IBM IT Architect Assistant, you can refresh your GitHub Pages with command line executions. Note that `python 3.x` has to be installed on your machine in order to use this approach.
-
-In a terminal window:
-1. Download your repository to your local machine
-     - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
-2. In the directory where your repository is, run `make venv` to create the python environment
-3. Run `make serve` to start up the MkDocs engine on your local machine
-4. Update the docs/*.md files as needed
-5. Commit changes to your repository
-6. Run `make deploy` to deploy the changes
-
-
-⚠️ Warning: If there are updates to your architecture after executing the Export function, DO NOT USE this approach. Run the Export utility in IBM IT Architect Assistant to generate the latest updates.
-
-
-<hr>
 
 ## Feedback and Contributions
 
-We are always looking for feedback and contributions.  
-
-- If you have any *suggestions* to the documentation or *contributions*, please submit a *Pull request* with your suggested changes or contributions.
-- If you have *general* feedback and comments, please open a *New Issue*.
+Please refer to the [OIC handbook page](https://github.ibm.com/oic/open-innovation-handbook).
 
 Your participation is greatly appreciated.
