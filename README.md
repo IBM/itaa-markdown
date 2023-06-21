@@ -2,7 +2,7 @@
 
 
 ## Introduction
-This is the markdown repository template for the "Export to GitHub Pages" utility in Cognitive Architect (aka IBM IT Architect Assistant - SaaS Version). With Release 3.16.5, the template is now based on the [OIC Open Innovation Handbook](https://github.ibm.com/oic/open-innovation-handbook).
+This is the markdown repository template for the "Export to GitHub Pages" utility in Cognitive Architect (aka IBM IT Architect Assistant - SaaS Version). With Release 3.16.5, the template is now based on the [OIC Handbook Template](https://github.ibm.com/oic/handbook-template-cognitive-architect).
 
 The export utility creates markdown files containing the architecture information and then generates the corresponding GitHub Pages of the architecture using [MkDocs](https://www.mkdocs.org), [ejs](https://ejs.co/), [MkDocs Awesome Pages plugin](https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin) and [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/getting-started/).  
 
@@ -154,107 +154,11 @@ To change the look & feel of your pages:
 
 💡 Tip: If the GitHub Pages do not reflect your latest updates, clear the cache and refresh.
 
-
-
-### Customization Examples
-
-
-#### Theme Customization
-
-1. Copy the `mkdocs.ejs` file to be changed from the *templates/official_template* folder to the *templates/user_template* one. 
-   - Do NOT change the name of the file
-   - This is REQUIRED to ensure that any theme customization is not overwritten with each Export action. 
-2. Modify the content as needed (refer to [Material for MkDocs - Customization](https://squidfunk.github.io/mkdocs-material/customization/) for more information).
-3. Re-submit the Export request in Cognitive Architect.
-
-
-#### Example 1: Change theme color
-
-- The default color generated is **black** with accent color of **red**, as shown in the `mkdocs.ejs` file.
-  ```
-  palette:
-    primary: 'black'
-    accent: 'red'
-  ```
-  ![default theme color](images/theme-default-color.png)
-
-- To change the colors, modify the "palette" in the `mkdocs.ejs` file as shown:
-  ```
-  palette:
-    primary: 'indigo'
-    accent: 'green'
-  ```
-  The updated colors of the banner and accent will be as follows:
-  ![updated theme color](images/theme-updated-color.png)
-
-
-#### Example 2: Change site name
-
-- The default site name is your architecture name, for e.g. "OfferingArchitectureKitTemplate 1202". This is reflected in the `mkdocs.ejs` file as:
-  ```
-  site_name: <%=data.archData.name%>
-  ```
-  ![default site name](images/theme-default-color.png)
-
-- To change the site name, modify the site_name in the `mkdocs.ejs` file as shown:
-  ```
-  site_name: Here is the site name
-  ```
-  ![updated site name](images/theme-updated-site-name.png)
-
-
-#### Example 3: Add additional information in the footer
-
-- The default footer is as shown:
-  ![default footer](images/theme-default-footer.png)
-
-- To add a Copyright in the footer, update `mkdocs.ejs` with the copyright block:
-  ```
-  copyright:
-    Copyright &copy; 2021 - 2022 Your Name
-
-  extra_css:
-    - extra.css
-  extra_javascript:
-    - extra.js
-  ```
-  ![updated footer](images/theme-updated-footer.png)
-
-- To add social links, update with the "extra:" block:
-  ```
-  extra:
-    social:
-      - icon: fontawesome/solid/paper-plane
-        link: mailto:your-email@address.com
-      - icon: fontawesome/brands/github
-        link: https://yourbrandlink/
-
-  extra_css:
-    - extra.css
-  extra_javascript:
-    - extra.js
-  ```
-
-  ![mail-to link](images/theme-footer-mail-to.png)
-  ![github link](images/theme-footer-brand.png)
-
-
-#### Example 4: Change the footer color
-
-- To change the color of the footer, add the following to the end of the `extra.css` file:
-  ```
-  .md-footer {
-      background-color: #b5a240;
-  }
-  ```
-  ![updated footer color](images/theme-updated-footer-color.png)
-
-
 <hr>
 
 
 ## Feedback and Contributions
 
-Please refer to the [OIC handbook page](https://github.ibm.com/oic/open-innovation-handbook).
+Please refer to the [OIC Handbook Template](https://github.ibm.com/oic/handbook-template-cognitive-architect).
 
 Your participation is greatly appreciated.
