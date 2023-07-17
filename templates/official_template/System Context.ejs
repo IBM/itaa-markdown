@@ -1,3 +1,6 @@
+<% if (data.tocPosition) { %>
+# <%- data.tocPosition %> System Context
+<% } %>
 
 <% if (data.name) { %>
 ### Name
@@ -37,7 +40,7 @@
 
 | Name | Description |
 | --- | --- |
-<% data.targetSystems.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |
+<% data.targetSystems.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |
 <% }); %>
 <% } %>
 

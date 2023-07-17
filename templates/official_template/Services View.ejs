@@ -1,4 +1,9 @@
-# AOD-Svc: <%- data.name %>
+---
+tags:
+    - AOD-Svc
+---
+
+# <%- data.tocPosition %> <%- data.name %>
 
 
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
@@ -26,9 +31,11 @@
 <% if (data.actors.length > 0 || data.subSystems.length > 0 || data.logicalComponents.length > 0 || data.logicalConnectors.length > 0 ) { %>
 ## Element(s)
 
+<%# 
 [Expand all](#){ .md-button .diff-line }
 
 [Collapse all](#){ .md-button .collapse-line }
+%>
 
 <% if (data.actors.length > 0) { %>
 ### Actor(s)
@@ -43,9 +50,9 @@
 <% if (data.subSystems.length > 0) { %>
 ### Subsystem(s)
 
-| Name | Description |
-| --- | --- |
-<% data.subSystems.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description %> |
+| Name | Description | Sub-Diagram |
+| --- | --- | --- |
+<% data.subSystems.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <% if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a><% } else if(ele.subDiagramId) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a> (Not Exported)<% } %> |
 <% }) %>
 
 <% } %>
@@ -60,12 +67,6 @@
 
 <table>
     <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
     <tr>
         <td> <strong>Name</strong> </td>
         <td><%- ele.name %></td>
@@ -131,14 +132,14 @@
     <% if (ele.subDiagramID) { %>
     <tr>
         <td> <strong>Sub-Diagram</strong> </td>
-        <% if (data.subInfo && data.subInfo[ele.subDiagramID]) { %>            
-        <td><a href="<%- 'URL_' + ele.subDiagramID %>">
+        <% if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>            
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
                 <%- ele.subDiagramId %>
         </a></td>
         <% } else { %>
-        <td>
-            <%- ele.subDiagramId %>
-        </td>
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
+                <%- ele.subDiagramId %>
+        </a> (Not Exported)</td>
         <% } %>
     </tr>
     <% } %>
@@ -155,10 +156,24 @@
 <% if (data.logicalConnectors.length > 0) { %>
 ### Logical Connector(s)
 
+<% if (data.logicalConnectors.length > 0 && data.informativeFlag.logicalConnectors == 1) { %>
 | Name | Description |
-| --- | --- | 
-<% data.logicalConnectors.forEach(function(ele){ %> <%if(ele.name != null && ele.name != "" && ele.description != null && ele.description != "") { %> | <%- ele.name %> | <%- ele.description %> | <%} %>
+| --- | --- |
+<% data.logicalConnectors.forEach(function(ele){ %> <%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")) { %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <%} %>
 <% }); %>
+<% } %>
+
+<% if (data.logicalConnectors.length > 0 && data.informativeFlag.logicalConnectors == 2) { %>
+| Name | Description |
+| --- | --- |
+<% data.logicalConnectors.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+
+Other connectors are not named.
+<% } %>
+
+<% if (data.logicalConnectors.length > 0 && data.informativeFlag.logicalConnectors == 3) { %>
+All connectors are not named.
+<% } %>
     
 <% } %>
 

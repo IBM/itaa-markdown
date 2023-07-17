@@ -1,4 +1,4 @@
-# <%- data.id %> - <%- data.name %>
+# <%- data.tocPosition %> <%- data.id %> - <%- data.name %>
 
 
 <% if (data.status) { %>
@@ -58,9 +58,11 @@
 
 
 <% if (data.alternatives.length > 0) { %>
+<%# 
 [Expand all](#){ .md-button .diff-line }
 
 [Collapse all](#){ .md-button .collapse-line }
+%>
 
 ### Alternatives
 
@@ -71,12 +73,6 @@
 
 <table>
     <caption></caption>
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-        </tr>
-    </thead>
     <tr>
         <td> <strong>Name</strong> </td>
         <td><%- al.name %></td>

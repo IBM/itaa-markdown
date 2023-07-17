@@ -1,5 +1,9 @@
+---
+tags:
+    - LDM
+---
 
-# LDM: <%- data.name %>
+# <%- data.tocPosition %> <%- data.name %>
 
 
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
@@ -26,7 +30,7 @@
 <% } %>
 
 
-<% if (data.entities.length > 0 || data.relationships.length > 0 ) { %>
+<% if (data.entities.length > 0 || data.relationships.length > 0 || data.specializations.length > 0) { %>
 ## Element(s)
 
 
@@ -34,7 +38,7 @@
 ### Entity(ies)
 | Name | Description | Attribute Name | Attribute Type  |
 | --- | --- | --- | --- |
-<% data.entities.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |  <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.name %></div><% })  %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.type %></div><% }) %><% } %> |
+<% data.entities.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |  <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.name %><br><% })  %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.type %><br><% }) %><% } %> |
 <% }); %>
 <% } %>
 
@@ -44,8 +48,16 @@
 ### Relationships
 | Name | Description | Attribute Name | Attribute Type  | Connections & Multiplicity |
 | --- | --- | --- | --- | --- |
-<% data.relationships.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.name %></div><% }) %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><div><%- gg.type %>></div><% }) %><% } %> | <% if (ele.relationshipConnections) { %><% ele.relationshipConnections.forEach(gg=> { %><div><%- gg.name %>,[<%- gg.type %>]</div><div><%- gg.connectedEntity.name %></div><% }) %> |
+<% data.relationships.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.name %><br><% }) %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.type %><br><% }) %><% } %> |<% if (ele.relationshipConnections) { %><% ele.relationshipConnections.forEach(gg=> { %><% if (gg.name == "*" && gg.type == "*") { %>\<%- gg.name %>,[\<%- gg.type %>]<br><%- gg.connectedEntity.name %><br><% } %><% if (gg.name != "*" && gg.type != "*") { %><%- gg.name %>,[<%- gg.type %>]<br><%- gg.connectedEntity.name %><br><% } %><% if (gg.name == "*" && gg.type != "*") { %>\<%- gg.name %>,[<%- gg.type %>]<br><%- gg.connectedEntity.name %><br><% } %><% if (gg.name != "*" && gg.type == "*") { %><%- gg.name %>,[\<%- gg.type %>]<br><%- gg.connectedEntity.name %><br><% } %><% }) %> |
 <% } %><% }); %>
+<% } %>
+
+<% if (data.specializations.length > 0) { %>
+### Specializations
+| Name | Description | Attribute Name | Attribute Type  | ISA Parent | ISA Children |
+| --- | --- | --- | --- | --- | --- |
+<% data.specializations.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.name %><br><% }) %><% } %> | <% if (ele.attributes) { %><% ele.attributes.forEach(gg=> { %><%- gg.type %><br><% }) %><% } %> | <% if (ele.specializationConnections) { %><% ele.specializationConnections.forEach(gg=> { %><% if (gg.type == "parent") { %><%- gg.connectedEntity.name%><% } %> <%}) %><% } %> | <% if (ele.specializationConnections) { %><% ele.specializationConnections.forEach(gg=> { %><% if (gg.type == "child") { %><%- gg.connectedEntity.name%><% } %><%}) %><% } %> |
+<% }); %>
 <% } %>
 
 <% } %>

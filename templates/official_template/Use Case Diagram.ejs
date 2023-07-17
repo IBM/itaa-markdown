@@ -1,4 +1,9 @@
-# UCD: <%- data.name %>
+---
+tags:
+    - UCD
+---
+
+# <%- data.tocPosition %> <%- data.name %>
 
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
@@ -23,7 +28,7 @@
 <% } %>
 
 
-<% if (data.actors && data.actors.length > 0 || (data.useCases && data.useCases.length > 0) ) { %>
+<% if (data.actors && data.actors.length > 0 || (data.useCases && data.useCases.length > 0) || (data.associations && data.associations.length > 0)) { %>
 ## Element(s)
 
 <% if (data.actors && data.actors.length > 0) { %>
@@ -32,7 +37,7 @@
 | Name | Description | Type | GenericGroup |
 | --- | --- | --- | --- |
 <% data.actors.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <%- ele.type %> | <% if (data.genericGroup && data.genericGroup[ele._id]) { %><% data.genericGroup[ele._id].forEach(gg=> { %><div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div><div><%- gg.description %></div><% }) %><% } %> |
-    <% }); %>
+<% }); %>
 <% } %>
 
 
@@ -42,6 +47,30 @@
 | --- | --- |
 <% data.useCases.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description %> | 
 <% }); %>
+<% } %>
+
+<% if (data.associations.length > 0) { %>
+### Associations(s)
+
+<% if (data.associations.length > 0 && data.informativeFlag.associations == 1) { %>
+| Name | Description |
+| --- | --- |
+<% data.associations.forEach(function(ele){ %> <%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")) { %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <%} %>
+<% }); %>
+<% } %>
+
+<% if (data.associations.length > 0 && data.informativeFlag.associations == 2) { %>
+| Name | Description |
+| --- | --- |
+<% data.associations.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+
+Other associations are not named.
+<% } %>
+
+<% if (data.associations.length > 0 && data.informativeFlag.associations == 3) { %>
+All associations are not named.
+<% } %>
+    
 <% } %>
 
 <% } %>

@@ -1,4 +1,9 @@
-# CM-Seq: <%- data.name %>
+---
+tags:
+    - CM-Seq
+---
+
+# <%- data.tocPosition %> <%- data.name %>
 
 
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
@@ -32,7 +37,7 @@
 
 | Name | Description |
 | --- | --- | 
-<% data.timelines.forEach(function(ele){ %> <%if(ele.name != null && ele.name != "" && ele.description != null && ele.description != "") { %> | <%- ele.name %> | <%- ele.description %> | <%} %>
+<% data.timelines.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> |
 <% }); %>
     
 <% } %>
@@ -43,7 +48,7 @@
 
 | Name | Description | Type |
 | --- | --- | --- |
-<% data.componentMessages.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description %> | <%- ele.type %> |
+<% data.componentMessages.forEach(function(ele){ %> | <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <%- ele.type %> |
 <% }); %>
     
 <% } %>
