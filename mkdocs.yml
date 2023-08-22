@@ -61,7 +61,7 @@ markdown_extensions:
       repo: CognitiveArchitectRepoParent/CognitiveArchitectRepoDir
   toc:
       permalink: true
-      toc_depth: 3
+      toc_depth: 6
 
 plugins:
   # Allow Tags on the pages - see https://squidfunk.github.io/mkdocs-material/setup/setting-up-tags/
