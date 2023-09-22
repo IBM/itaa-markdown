@@ -158,7 +158,7 @@ To change the look & feel of your pages:
 
 There are two approaches to serve up the GitHub pages from a local machine. 
 
-### Via command cli 
+### Via command line 
 
 Note that `python 3.x` has to be installed on your machine in order to use this approach.
 
