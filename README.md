@@ -180,6 +180,7 @@ In a terminal window:
 3. Run `make podman-run` to serve up the GitHub pages on your local machine
 4. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/`
 
+<hr>
 
 ## Feedback and Contributions
 
