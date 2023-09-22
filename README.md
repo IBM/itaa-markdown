@@ -17,9 +17,10 @@ It consists of the following folders:
 and files:
 - Makefile : for redeploying changes made to the theme and/or markdown files 
 - README.md : this page
+- base.yml : configuration file for MkDocs
 - mkdocs.yml : configuration file for MkDocs
 - requirements.txt : MkDocs dependencies
-
+- Dockerfile : configuration file for building container 
 
 When the export is successfully executed:
 - the markdown files containing the various architectural artifacts and instances will be stored in the `docs` folder AND
@@ -126,10 +127,7 @@ It is important to understand who can view the Pages.
 - In Public GitHub, since the repository has to be public, anyone can see the generated GitHub Pages
 - In Enterprise GitHub, the repository can be private, BUT the *published site will be visible to all enterprise members*.
 
-To limit access to your GitHub Pages, one option is to serve up the pages from a local machine.
-- Execute steps 1 through 3 outlined in the [Refreshing your Pages](#refreshing-your-pages-using-command-line-execution) section
-- When the `make serve` command is completed, you can view the pages using the URL generated, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
-
+To limit access to your GitHub Pages, one option is to [serve up the pages from a local machine](#Serve-up-the-github-pages-from-a-local-machine).
 
 <hr>
 
@@ -156,6 +154,33 @@ To change the look & feel of your pages:
 
 <hr>
 
+## Serve up the github pages from a local machine
+
+There are two approaches to serve up the GitHub pages from a local machine. 
+
+### Via command line 
+
+Note that `python 3.x` has to be installed on your machine in order to use this approach.
+
+In a terminal window:
+1. Download your repository to your local machine
+     - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
+2. In the directory where your repository is, run `make venv` to create the python environment
+3. Run `make serve` to serve up the GitHub pages on your local machine
+4. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
+
+### Via container
+
+Note that `podman` has to be installed on your machine in order to use this approach.
+
+In a terminal window:
+1. Download your repository to your local machine
+     - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
+2. In the directory where your repository is, run `make podman` to build the image
+3. Run `make podman-run` to serve up the GitHub pages on your local machine
+4. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/`
+
+<hr>
 
 ## Feedback and Contributions
 

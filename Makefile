@@ -90,5 +90,30 @@ deploy:
 combine:
 	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocscombine -o out/$(HANDBOOK_NAME)-combined.md"
 
+# help: build-docs                     - mkdocs build
+.PHONY: build-docs
+build-docs:
+	@/bin/bash -c "source $(VENV_DIR)/bin/activate && mkdocs build"
+	
+# help: docker                         - build container using docker
+.PHONY: docker
+docker:
+	@docker build -f Dockerfile -t archdocs .
+
+# help: docker-run                     - run container using docker
+.PHONY: docker-run
+docker-run:
+	@docker run -it --rm -p 8080:80 archdocs
+
+# help: podman                         - build container using podman
+.PHONY: podman
+podman:
+	@podman build -f Dockerfile -t archdocs .
+
+# help: podman-run                     - run container using podman
+.PHONY: podman-run
+podman-run:
+	@podman run -it --rm -p 8080:80 archdocs
+
 # Keep these lines at the end of the file to retain output formatting.
 # help:
