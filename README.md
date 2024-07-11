@@ -163,22 +163,24 @@ There are two approaches to serve up the GitHub pages from a local machine.
 Note that `python 3.x` has to be installed on your machine in order to use this approach.
 
 In a terminal window:
-1. Download your repository to your local machine
+1. Complete the export to github pages from cognitive architect tool
+2. Download your github page's repository to your local machine
      - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
-2. In the directory where your repository is, run `make venv` to create the python environment
-3. Run `make serve` to serve up the GitHub pages on your local machine
-4. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
+3. In the directory where your repository is, run `make venv` to create the python environment
+4. Run `make serve` to serve up the GitHub pages on your local machine
+5. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/{github_account}/{repo_name}/`
 
 ### Via container
 
 Note that `podman` has to be installed on your machine in order to use this approach.
 
 In a terminal window:
-1. Download your repository to your local machine
+1. Complete the export to github pages from cognitive architect tool 
+2. Download your github page's repository to your local machine
      - see https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository for more information
-2. In the directory where your repository is, run `make podman` to build the image
-3. Run `make podman-run` to serve up the GitHub pages on your local machine
-4. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/`
+3. In the directory where your repository is, run `make podman` to build the image
+4. Run `make podman-run` to serve up the GitHub pages on your local machine
+5. Once the server is up, you can view the pages using the URL, for eg, `http://127.0.0.1:8000/`
 
 <hr>
 

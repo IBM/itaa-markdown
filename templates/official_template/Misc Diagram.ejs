@@ -8,6 +8,12 @@ tags:
 
 ## Diagram
 
+<% if (data.specialCharInName) { %>
+???+ warning
+
+    Could not display the image because instance name contains one or more of these characters: #[].
+<% } %>
+
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 

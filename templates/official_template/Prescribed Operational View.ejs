@@ -6,6 +6,12 @@ tags:
 # <%- data.tocPosition %> <%- data.name %>
 
 
+<% if (data.specialCharInName) { %>
+???+ warning
+
+    Could not display the image because instance name contains one or more of these characters: #[].
+<% } %>
+
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
@@ -75,9 +81,10 @@ tags:
 <% if (data.logicalConnections.length > 0 && data.informativeFlag.logicalConnections == 2) { %>
 | Name | Description |
 | --- | --- | 
-<% data.logicalConnections.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+<% data.logicalConnections.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |
+<%}%><% });%>
 
-Other connections are not named.
+There are other connections that have no names and descriptions.
 <% } %>
 
 <% if (data.logicalConnections.length > 0 && data.informativeFlag.logicalConnections == 3) { %>
@@ -101,124 +108,66 @@ All connections are not named.
     <tr>
         <td> <strong>Name</strong> </td>
         <td><%- ele.name %></td>
-    </tr>
-    <% if (ele.description) { %>
+    </tr><% if (ele.description) { %>
     <tr>
         <td> <strong>Description</strong> </td>
         <td><%- ele.description %></td>
-    </tr>
-    <% } %>
-    <% if (ele.type) { %>
+    </tr><% } if (ele.type) { %>
     <tr>
         <td> <strong>Type</strong> </td>
         <td><%- ele.type %></td>
-    </tr>
-    <% } %>
-    <% if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].taxonomies && data.logicalNodesList[ele.name].taxonomies.length > 0) { %>
+    </tr><% } if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].taxonomies && data.logicalNodesList[ele.name].taxonomies.length > 0) { %>
     <tr>
         <td> <strong>Primary Capability</strong> </td>
-        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].taxonomies.forEach(gg=> { %>
-                <div><%- gg %></div>
-            <% }) %>
-        <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].physicalComponents && data.logicalNodesList[ele.name].physicalComponents.length > 0) { %>
+        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { data.logicalNodesList[ele.name].taxonomies.forEach(gg=> { %>
+                <div><%- gg %></div><% }) } %></td>
+    </tr><% } if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].physicalComponents && data.logicalNodesList[ele.name].physicalComponents.length > 0) { %>
     <tr>
         <td> <strong>Implementation</strong> </td>
-        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].physicalComponents.forEach(gg=> { %>
-                <div><a href="<%- gg.url %>"><%- gg.name %></a></div>
-            <% }) %>
-        <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].architecturalDecisions && data.logicalNodesList[ele.name].architecturalDecisions.length > 0) { %>
+        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { data.logicalNodesList[ele.name].physicalComponents.forEach(gg=> { %>
+                <div><a href="<%- gg.url %>"><%- gg.name %></a></div><% }) } %></td>
+    </tr><% } if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].architecturalDecisions && data.logicalNodesList[ele.name].architecturalDecisions.length > 0) { %>
     <tr>
         <td> <strong>Architectural Decision</strong> </td>
-        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].architecturalDecisions.forEach(gg=> { %>
-                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div>
-            <% }) %>
-        <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].nonFunctionalRequirements && data.logicalNodesList[ele.name].nonFunctionalRequirements.length > 0) { %>
+        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { data.logicalNodesList[ele.name].architecturalDecisions.forEach(gg=> { %>
+                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div><% }) } %></td>
+    </tr><% } if (data.logicalNodesList && data.logicalNodesList[ele.name] && data.logicalNodesList[ele.name].nonFunctionalRequirements && data.logicalNodesList[ele.name].nonFunctionalRequirements.length > 0) { %>
     <tr>
         <td> <strong>Non Functional Requirement</strong> </td>
-        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { %>
-            <% data.logicalNodesList[ele.name].nonFunctionalRequirements.forEach(gg=> { %>
-                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div>
-            <% }) %>
-        <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
+        <td><% if (data.logicalNodesList && data.logicalNodesList[ele.name]) { data.logicalNodesList[ele.name].nonFunctionalRequirements.forEach(gg=> { %>
+                <div><a href="<%- 'URL_' + gg._id %>"><%- gg.name %></a></div><% }) } %></td>
+    </tr><% } if (data.genericGroup && data.genericGroup[ele._id]) { %>
     <tr>
         <td> <strong>Generic Group</strong> </td>
-        <td><% if (data.genericGroup && data.genericGroup[ele._id]) { %>
-                <% data.genericGroup[ele._id].forEach(gg=> { %>
+        <td><% if (data.genericGroup && data.genericGroup[ele._id]) { data.genericGroup[ele._id].forEach(gg=> { %>
                 <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
-            <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.diagramRelation && data.diagramRelation[ele._id] && data.diagramRelation[ele._id].diagram) { %>
+                <div><%- gg.description %></div><% }) } %></td>
+    </tr><% } if (data.diagramRelation && data.diagramRelation[ele._id] && data.diagramRelation[ele._id].diagram) { %>
     <tr>
         <td> <strong>Related Diagrams</strong> </td>
-        <td><% if (data.diagramRelation && data.diagramRelation[ele._id] && data.diagramRelation[ele._id].diagram) { %>
-            <% data.diagramRelation[ele._id].diagram.forEach(gg=> { %>
-                <div><a href="<%- 'URL_' + gg.properties._id %>"><%- gg.properties.name %></a><% if (!data.instanceList.includes(gg.properties._id)) { %> (Not Exported)<% } %></div>
-            <% }) %>
-        <% } %></td>
-    </tr>
-    <% } %>
-    <% if (data.elementRelation && data.elementRelation[ele._id] && (data.elementRelation[ele._id].parentNodes && data.elementRelation[ele._id].parentNodes.length > 0) || (data.elementRelation[ele._id].childNodes && data.elementRelation[ele._id].childNodes.length > 0)) { %>
+        <td><% if (data.diagramRelation && data.diagramRelation[ele._id] && data.diagramRelation[ele._id].diagram) { data.diagramRelation[ele._id].diagram.forEach(gg=> { %>
+                <div><a href="<%- 'URL_' + gg.properties._id %>"><%- gg.properties.name %></a><% if (Array.isArray(data.instanceList) && !data.instanceList.includes(gg.properties._id)) { %> (Not Exported)<% } %></div><% }) } %></td>
+    </tr><% } if (data.elementRelation && data.elementRelation[ele._id] && (data.elementRelation[ele._id].parentNodes && data.elementRelation[ele._id].parentNodes.length > 0) || (data.elementRelation[ele._id].childNodes && data.elementRelation[ele._id].childNodes.length > 0)) { %>
         <tr>
         <td> <strong>Related Elements</strong> </td>
-        <td>
-            <% data.elementRelation[ele._id].parentNodes.forEach(gg=> { %>
-                <div><%- gg.properties.name %></div>
-                <% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { %>
-                    <% data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
-                    <li><a href="<%- 'URL_' + dia.properties._id %>"><%- dia.properties.name %></a><% if (!data.instanceList.includes(dia.properties._id)) { %> (Not Exported)<% } %></li>
-                    <% }) %>
-                <% } %>
-            <% }) %>
-            <% data.elementRelation[ele._id].childNodes.forEach(gg=> { %>
-                <div><%- gg.properties.name %></div>
-                <% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { %>
-                    <% data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
-                    <li><div><a href="<%- 'URL_' + dia.properties._id %>"><%- dia.properties.name %></a><% if (!data.instanceList.includes(dia.properties._id)) { %> (Not Exported)<% } %></div></li>
-                    <% }) %>
-                <% } %>
-            <% }) %>
+        <td><% data.elementRelation[ele._id].parentNodes.forEach(gg=> { %>
+                <div><%- gg.properties.name %></div><% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
+                    <li><a href="<%- 'URL_' + dia.properties._id %>"><%- dia.properties.name %></a><% if (Array.isArray(data.instanceList) && !data.instanceList.includes(dia.properties._id)) { %> (Not Exported)<% } %></li><% }); } }); data.elementRelation[ele._id].childNodes.forEach(gg=> { %>
+                <div><%- gg.properties.name %></div><% if (gg.properties._id && data.diagramRelation && data.diagramRelation[gg.properties._id]) { data.diagramRelation[gg.properties._id].diagram.forEach(dia => { %>
+                    <li><div><a href="<%- 'URL_' + dia.properties._id %>"><%- dia.properties.name %></a><% if (Array.isArray(data.instanceList) && !data.instanceList.includes(dia.properties._id)) { %> (Not Exported)<% } %></div></li><% }); } }); %>
        </td>
-       </tr>
-    <% } %>
-    <% if (ele.subDiagramID) { %>
+    </tr><% } if (ele.subDiagramID) { %>
     <tr>
-        <td> <strong>Sub-Diagram</strong> </td>
-        <% if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>
-        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
-                <%- ele.subDiagramId %>
-        </a></td>
-        <% } else { %>
-        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
-                <%- ele.subDiagramId %>
-        </a> (Not Exported)</td>
-        <% } %>
-        
-    </tr>
-    <% } %>
+        <td> <strong>Sub-Diagram</strong> </td><% if (data.subLink && data.subLink[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>            
+        <td><a href="<%- data.subLink[ele.subDiagramID] %>"><%- ele.subDiagramId %>
+            </a></td><% } else if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %>
+            </a></td><% } else { %>
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %>
+            </a> (Not Exported)</td><% } %>
+    </tr><% } %>
 </table>
-
-
 </details>
-
-
     <% }); %>
 <% } %>
 
@@ -237,9 +186,10 @@ All connections are not named.
 <% if (data.physicalConnections.length > 0 && data.informativeFlag.physicalConnections == 2) { %>
 | Name | Description |
 | --- | --- | 
-<% data.physicalConnections.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+<% data.physicalConnections.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |
+<%}%><% });%>
 
-Other connectors are not named.
+There are other connectors that have no names and descriptions.
 <% } %>
 
 <% if (data.physicalConnections.length > 0 && data.informativeFlag.physicalConnections == 3) { %>
@@ -263,62 +213,53 @@ All connectors are not named.
     <tr>
         <td> <strong>Name</strong> </td>
         <td><%- ele.name %></td>
-    </tr>
-    <% if (ele.description) { %>
+    </tr><% if (ele.description) { %>
     <tr>
         <td> <strong>Description</strong> </td>
         <td><%- ele.description %></td>
-    </tr>
-    <% } %>
-    <% if (ele.cardinality) { %>
+    </tr><% } if (ele.cardinality) { %>
     <tr>
         <td> <strong>Cardinality</strong> </td>
         <td><%- ele.cardinality %></td>
-    </tr>
-    <% } %>
-    <% if (ele.cpu) { %>
+    </tr><% } if (ele.cpu) { %>
     <tr>
         <td> <strong>CPU/Cores</strong> </td>
         <td><%- ele.cpu %></td>
-    </tr>
-    <% } %>
-    <% if (ele.memory) { %>
+    </tr><% } if (ele.memory) { %>
     <tr>
         <td> <strong>Memory</strong> </td>
         <td><%- ele.memory %></td>
-    </tr>
-    <% } %>
-    <% if (ele.networkPorts) { %>
+    </tr><% } if (ele.networkPorts) { %>
     <tr>
         <td> <strong>Network ports</strong> </td>
         <td><%- ele.networkPorts %></td>
-    </tr>
-    <% } %>
-    <% if (ele.os) { %>
+    </tr><% } if (ele.os) { %>
     <tr>
         <td> <strong>OS/Hyper-visor</strong> </td>
         <td><%- ele.os %></td>
-    </tr>
-    <% } %>
-    <% if (ele.offering) { %>
+    </tr><% } if (ele.offering) { %>
     <tr>
         <td> <strong>Deploy</strong> </td>
         <td><%- ele.offering %></td>
-    </tr>
-    <% } %>
-    <% if (ele.provision) { %>
+    </tr><% } if (ele.provision) { %>
     <tr>
         <td> <strong>Deploy Provisioning</strong> </td>
         <td><%- ele.provision %></td>
-    </tr>
-    <% } %>
+    </tr><% } %>
 </table>
-
-
 </details>
-
-
     <% }); %>
 <% } %>
+
+<% } %>
+
+<% if (data.subInstanceInfo && data.subInstanceInfo.length) { %>
+### Sub-Level Diagram(s)
+
+<% data.subInstanceInfo.forEach(subInstanceInfo => { %>
+
+<%- include(process.cwd()+ '/server/assets/ejs_templates/SubDiagram', {data: subInstanceInfo}); %>
+
+<% }) %>
 
 <% } %>

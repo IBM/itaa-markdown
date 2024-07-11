@@ -5,6 +5,12 @@ tags:
 
 # <%- data.tocPosition %> <%- data.name %>
 
+<% if (data.specialCharInName) { %>
+???+ warning
+
+    Could not display the image because instance name contains one or more of these characters: #[].
+<% } %>
+
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
@@ -62,9 +68,10 @@ tags:
 <% if (data.associations.length > 0 && data.informativeFlag.associations == 2) { %>
 | Name | Description |
 | --- | --- |
-<% data.associations.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+<% data.associations.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |
+<%}%><% });%>
 
-Other associations are not named.
+There are other associations that have no names and descriptions.
 <% } %>
 
 <% if (data.associations.length > 0 && data.informativeFlag.associations == 3) { %>

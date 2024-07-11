@@ -6,6 +6,12 @@ tags:
 # <%- data.tocPosition %> <%- data.name %>
 
 
+<% if (data.specialCharInName) { %>
+???+ warning
+
+    Could not display the image because instance name contains one or more of these characters: #[].
+<% } %>
+
 ![<%- data.name %>](<%- "URL_" + data._id + ".svg" %>)
 
 
@@ -53,7 +59,7 @@ tags:
 
 | Name | Description | Sub-Diagram |
 | --- | --- | --- |
-<% data.subSystems.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <% if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a><% } else if(ele.subDiagramId) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a> (Not Exported)<% } %> |
+<% data.subSystems.forEach(function(ele){ %>| <%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> | <% if (data.subLink && data.subLink[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %><a href="<%- data.subLink[ele.subDiagramID] %>"><%- ele.subDiagramId %></a><% } else if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a><% } else if(ele.subDiagramId) { %><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %></a> (Not Exported)<% } %> |
 <% }) %>
 
 <% } %>
@@ -72,85 +78,54 @@ tags:
     <tr>
         <td> <strong>Name</strong> </td>
         <td><%- ele.name %></td>
-    </tr>
-    <% if (ele.description) { %>
+    </tr><% if (ele.description) { %>
     <tr>
         <td> <strong>Description</strong> </td>
         <td><%- ele.description %></td>
-    </tr>
-    <% } %>
-    <% if (ele.taxonomies && ele.taxonomies.length > 0) { %>
+    </tr><% } if (ele.taxonomies && ele.taxonomies.length > 0) { %>
     <tr>
         <td> <strong>Primary Capability</strong> </td>
         <td><% ele.taxonomies.forEach(function(tax){ %><div><%- tax %></div><% }); %></td>
-    </tr>
-    <% } %>
-    <% if (data.logicalComponentList && data.logicalComponentList[ele._id]) { %>  
+    </tr><% } if (data.logicalComponentList && data.logicalComponentList[ele._id]) { %>
     <tr>
         <td> <strong>Deployment Unit</strong> </td>
-        <td>
-                <% data.logicalComponentList[ele._id].forEach(gg=> { %>
-                <div><%- gg %></div>
-                <% }) %>
+        <td><% data.logicalComponentList[ele._id].forEach(gg=> { %><div><%- gg %></div><% }) %>
         </td>
-    </tr>
-    <% } %>
-    <% if (ele.functionalRequirements && ele.functionalRequirements.length > 0) { %>
+    </tr><% } if (ele.functionalRequirements && ele.functionalRequirements.length > 0) { %>
     <tr>
         <td> <strong>Functional Requirement</strong> </td>
         <td><% ele.functionalRequirements.forEach(function(fr){ %><div><%- fr.id %> - <%- fr.name %></div><% }); %></td>
-    </tr>
-    <% } %>
-    <% if (ele.architecturalDecisions && ele.architecturalDecisions.length > 0) { %>
+    </tr><% } if (ele.architecturalDecisions && ele.architecturalDecisions.length > 0) { %>
     <tr>
         <td> <strong>Architecture Decision</strong> </td>
         <td><% ele.architecturalDecisions.forEach(function(ad){ %><div><%- ad.id%> - <%- ad.name %></div><% }); %></td>
-    </tr>
-    <% } %>
-    <% if (ele.nonFunctionalRequirements && ele.nonFunctionalRequirements.length > 0) { %>
+    </tr><% } if (ele.nonFunctionalRequirements && ele.nonFunctionalRequirements.length > 0) { %>
     <tr>
         <td> <strong>Non Functional Requirement</strong> </td>
         <td><% ele.nonFunctionalRequirements.forEach(function(nfr){ %><div><%- nfr.id%> - <%- nfr.name %></div><% }); %></td>
-    </tr>
-    <% } %>
-    <% if (ele.physicalComponents && ele.physicalComponents.length > 0) { %>
+    </tr><% } if (ele.physicalComponents && ele.physicalComponents.length > 0) { %>
     <tr>
         <td> <strong>Implementation</strong> </td>
         <td><% ele.physicalComponents.forEach(function(iml){ %><div><%- iml.name %></div><% }); %></td>
-    </tr>
-    <% } %>
-    <% if (data.genericGroup && data.genericGroup[ele._id]) { %>
+    </tr><% } if (data.genericGroup && data.genericGroup[ele._id]) { %>
     <tr>
         <td> <strong>Generic Group</strong> </td>
-        <td>
-        
-                <% data.genericGroup[ele._id].forEach(gg=> { %>
+        <td><% data.genericGroup[ele._id].forEach(gg=> { %>
                 <div><strong><%- gg.category %>,<%- gg.name %></strong>[<%- gg.type %>]</div>
-                <div><%- gg.description %></div>
-                <% }) %>
+                <div><%- gg.description %></div><% }) %>
         </td>
-    </tr>
-    <% } %>
-    <% if (ele.subDiagramID) { %>
+    </tr><% } if (ele.subDiagramID) { %>
     <tr>
-        <td> <strong>Sub-Diagram</strong> </td>
-        <% if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>
-        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
-                <%- ele.subDiagramId %>
-        </a></td>
-        <% } else { %>
-        <td><a href="<%- 'URL_' + ele.subDiagramID %>/">
-                <%- ele.subDiagramId %>
-        </a> (Not Exported)</td>
-        <% } %>
-    </tr>
-    <% } %>
+        <td> <strong>Sub-Diagram</strong> </td><% if (data.subLink && data.subLink[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>            
+        <td><a href="<%- data.subLink[ele.subDiagramID] %>"><%- ele.subDiagramId %>
+            </a></td><% } else if (data.subInfo && data.subInfo[ele.subDiagramID] && !data.subInfo[ele.subDiagramID].hideSubLink) { %>
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %>
+            </a></td><% } else { %>
+        <td><a href="<%- 'URL_' + ele.subDiagramID %>/"><%- ele.subDiagramId %>
+            </a> (Not Exported)</td><% } %>
+    </tr><% } %>
 </table>
-
-
 </details>
-
-
     <% }); %>
 <% } %>
 
@@ -168,9 +143,10 @@ tags:
 <% if (data.logicalConnectors.length > 0 && data.informativeFlag.logicalConnectors == 2) { %>
 | Name | Description |
 | --- | --- | 
-<% data.logicalConnectors.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |<%}%><% });%>
+<% data.logicalConnectors.forEach(function(ele){%><%if((ele.name != null && ele.name != "") || (ele.description != null && ele.description != "")){%>|<%- ele.name %> | <%- ele.description.replace(/>(https?[^<]*)<\/a>/g, '>`$1`</a>') %> |
+<%}%><% });%>
 
-Other connectors are not named.
+There are other connectors that have no names and descriptions.
 <% } %>
 
 <% if (data.logicalConnectors.length > 0 && data.informativeFlag.logicalConnectors == 3) { %>
@@ -178,5 +154,16 @@ All connectors are not named.
 <% } %>
     
 <% } %>
+
+<% } %>
+
+<% if (data.subInstanceInfo && data.subInstanceInfo.length) { %>
+### Sub-Level Diagram(s)
+
+<% data.subInstanceInfo.forEach(subInstanceInfo => { %>
+
+<%- include(process.cwd()+ '/server/assets/ejs_templates/SubDiagram', {data: subInstanceInfo}); %>
+
+<% }) %>
 
 <% } %>
